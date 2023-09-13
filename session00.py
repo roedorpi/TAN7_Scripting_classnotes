@@ -41,3 +41,4 @@ print(f'calculating the remainder after division 7 % 4 = {e}')
 # hole division, truncated decimal portion
 f = 7 // 4
 print(f'the hole number division by truncating the decimal portion 7 // 4 = {f}')
+

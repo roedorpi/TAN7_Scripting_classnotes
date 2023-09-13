@@ -11,13 +11,9 @@ is “cubed”.
 # they have two useful methods .index() to find the index of a given
 # element and .count() to find out how many times a given value occurs
 
-letters_DK = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-              'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-              'w', 'x', 'y', 'z', 'å', 'æ', 'ø')
+letters_DK = 'abcdefghijklmnopqrstuvwxyzåæø'
 
-letters_UK = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-              'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-              'w', 'x', 'y', 'z')
+letters_UK = 'abcdefghijklmnopqrstuvwxyz'
 
 # get data inputs from the console
 language = input('English (UK) or Danish (DK)? ')
