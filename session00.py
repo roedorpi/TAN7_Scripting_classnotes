@@ -1,4 +1,4 @@
-# Session 1 Course notes
+# Session 00 Course notes
 # Exercises. Familiarize your self with PyCharm and the python console for entering commands.
 # Hello world program
 print('hello world!')
