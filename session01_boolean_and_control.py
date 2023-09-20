@@ -22,7 +22,7 @@ not -   "flips" the operand; requires use of ( ) if not is after operator, e.g. 
 and -   requires both terms to be returned
 or -    either terms (or both) will be returned
 
-Predic the outcome or each line
+Predict the outcome or each line
 """
 True and True
 True and False
