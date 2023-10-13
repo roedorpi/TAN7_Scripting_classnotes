@@ -6,7 +6,6 @@ def welcome():
     """Display a simple welcome message."""
     print("Welcome to TAN7!")
 
-
 welcome()
 
 
@@ -15,7 +14,6 @@ welcome()
 def welcome_student(studentname):
     """Display a simple welcome message."""
     print(f"Hello, {studentname.title()}!")
-
 
 welcome_student('rodrigo')
 welcome_student()  # error - username was missing
@@ -117,7 +115,8 @@ print(musician)
 # ## returning a dictionary
 
 
-def build_person(first_name, last_name, age=None):  # none is a placeholder value,
+def build_person(first_name, last_name, age=None):
+    # none is a placeholder or default value
     # for when a variable has no specific value assigned to it
     """Return a dictionary of information about a person."""
     person = {'first': first_name, 'last': last_name}
