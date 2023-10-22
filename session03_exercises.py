@@ -111,6 +111,7 @@ for neededIngredient in ingredients[wantedName]:
     print(neededAmount, neededIngredient[1] + "s of", neededIngredient[2])
 
 # to make one portion of each recipe in cookbook:
+from collections import defaultdict
 
 ultimateAmount = defaultdict(float)
 ultimateUnit = dict()
