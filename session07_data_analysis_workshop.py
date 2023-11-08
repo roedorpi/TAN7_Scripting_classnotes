@@ -116,6 +116,7 @@ helmets_df.to_csv('outFile.csv')
 
 # ### scatterplots
 sns.scatterplot(data=helmets_df, x='BART', y='SSS_total', hue='Condition', style='Condition')
+plt.show()
 
 cap_df = helmets_df[helmets_df.Condition == 1]
 hel_df = helmets_df[helmets_df.Condition == 2]

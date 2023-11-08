@@ -38,8 +38,7 @@ print(f"using list comprehension, output: {[pos for pos, char in enumerate(strin
 
 """
  # REGULAR EXPRESSIONS
- definition: regular expressions (or RegEx) are sequences of characters that form PATTERNS that we can search for.
- RegEx can be used to check if a string contains a specified search pattern.
+ definition: regular expressions (or RegEx) are sequences of characters that form PATTERNS that we can search for. RegEx can be used to check if a string contains a specified search pattern.
 
  why do you care about RegEx? For example, if you search through all files in a folder, but want Python to return only a list of files that have a specific extension, or contain a specific word.
 
