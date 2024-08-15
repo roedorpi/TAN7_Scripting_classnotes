@@ -45,8 +45,8 @@ import pandas as pd
 import seaborn as sns
 import matplotlib
 import matplotlib.pyplot as plt
-import numpy as np
-
+# import numpy as np
+matplotlib.use('TkAgg') # back en for plotting needed in Win11
 
 # ### load data
 
