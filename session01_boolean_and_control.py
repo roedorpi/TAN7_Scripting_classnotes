@@ -1,3 +1,4 @@
+##
 """
 BOOlEAN VALUES
 definition: booleans represent one of two values: True or False
@@ -10,10 +11,11 @@ definition: booleans represent one of two values: True or False
 <= less than or equal to
 These operators can be used to compare values try it:
 """
+
 1 == 1
 "potato" > "potato"
 
-
+##
 """
 boolean operators are ordered by priority: 
 
@@ -22,8 +24,9 @@ not -   "flips" the operand; requires use of ( ) if not is after operator, e.g. 
 and -   requires both terms to be returned
 or -    either terms (or both) will be returned
 
-Predict the outcome or each line
+Predict the outcome of each line
 """
+
 True and True
 True and False
 False and False
@@ -37,6 +40,7 @@ False or True
 not True
 not False
 
+##
 """
 Control Structures
 
@@ -51,7 +55,7 @@ if a > b:
 
 print(outcome)
 
-# decrease counter if condition is not true
+## decrease counter if condition is not true
 outcome = 0
 if a > b:
     outcome += 1
@@ -60,7 +64,7 @@ else:
 
 print(outcome)
 
-# check another condition
+## check another condition
 outcome = 0
 if a > b:
     outcome += 1
@@ -71,7 +75,7 @@ else:
 
 print(outcome)
 
-# Check two conditions at once:
+## Check two conditions at once:
 outcome = 0
 if a > b and a > c:
     outcome += 2
@@ -80,7 +84,7 @@ elif a > b or a > c:
 else:
     outcome -= 1
 print(outcome)
-
+##
 """ 
 For Loops... just the beginning. 
 The for loop has the key words "for", "in", and the ending ":"
@@ -92,7 +96,7 @@ print(a)
 # Going through the elements of a string.
 for a in my_string:
     print(a)
-# here we use the function range(), that gives a set of values to iterate over. in this case from 0 to
+## here we use the function range(), that gives a set of values to iterate over. in this case from 0 to
 # the number of characters in the string minus 1 (why the minus one?).
 for i in range(len(my_string)-1):
     print(my_string[i])

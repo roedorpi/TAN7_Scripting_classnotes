@@ -1,5 +1,5 @@
 """
-Session 01 exercise solutions
+Session 01 exercise
 Exercise 1
 Make a program that takes a string and an integer as input from the user
 and returns a new string containing the letters from the original string
@@ -15,5 +15,4 @@ import sys
 """
 Make a program that changes temperature in degrees Celsius to Fahrenheit, 
 using the conversion: C*9/5 + 32 = F
-
 """

@@ -10,15 +10,17 @@ definition: a string is a series of characters inside "" or '' quotes
 "One of Python's strengths is its diverse and supportive community."
 """"It isn't," she said."""
 
-#strings can also be variables:
+##strings can also be variables:
 
 string1 = "this is a string."
 str(5)
 
 # concatenation
 "Alek" + "sandra"
+
+##
 """
-changing case in a string with methods
+Changing case in a string with methods
 definition: a method is an action that python can perform on a piece of data
 
 the "." tells python to make the title() method act on the variable name
