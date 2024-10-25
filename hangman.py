@@ -1,10 +1,12 @@
 import random
+import os
 
 class Hangman:
 
     def __init__(self, userid: str = 'subj01', num_guesses: int = 8):
         self.userid = userid
         self.num_guesses = num_guesses
+        self.output_string = []
 
     def draw_hangman(self):
         # method to draw hangman
@@ -22,8 +24,9 @@ class Hangman:
     def pick_random_word(self):
         # This function picks a random word from the SOWPODS dictionary.
         # open the sowpods dictionary as a text file in readable format
-
-        with open("sowpods.txt", 'r') as f:
+        curdir = os.getcwd()
+        filename = os.path.join(curdir, "csvfiles", "sowpods.txt")
+        with open(filename, 'r') as f:
             words = f.readlines()
 
         # generate a random index
@@ -48,7 +51,7 @@ class Hangman:
                 output.append("_")
 
         # creates a string from the members of the list by using whitespace as a separator
-        return " ".join(output)
+        self.output_string = " ".join(output)
 
     def guessed_incorrectly(self):
         self.num_guesses -= 1
