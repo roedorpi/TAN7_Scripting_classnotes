@@ -161,7 +161,7 @@ else:
 ## which recipes could you make one portion of, given the ingredients you have in your kitchen?
 from collections import defaultdict
 canMake = set()
-haveFromRecipe = defaultdict(set)
+
 missingFromRecipe = defaultdict(set)
 
 for availableRecipes, recipeIngredients in ingredients.items():

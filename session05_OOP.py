@@ -23,7 +23,7 @@ instantiation: making an object from a class; we say "to instantiate an object".
 """
 # Each instance created from the Dog class will store a name and an age, and
 # we’ll give each dog the ability to sit() and roll_over():
-
+##
 class Dog:
     """constructor"""
     # global attributes
@@ -53,7 +53,7 @@ class Dog:
 
 
 # %%
-
+##
 # making an instance from a class:
 my_dog = Dog('Hotdog', 6)
 
@@ -87,7 +87,7 @@ your_dog.roll_over()
 
 # we are creating a child class called HuntingDog.
 # HuntingDog is a child class to Dog (defined previously)
-
+##
 class HuntingDog(Dog):
     """Represents aspects and skills of a dog specific to hunting dogs."""
 
@@ -96,6 +96,8 @@ class HuntingDog(Dog):
         super().__init__(name, age)
 
 
+
+##
 # testing if inheritance is working correctly:
 # instantiate child class
 my_hunting_dog = HuntingDog('Rocket', '3')
@@ -106,7 +108,7 @@ my_hunting_dog.sit()
 
 
 # %%
-
+##
 class HuntingDog(Dog):
     """Represents aspects and skills of a dog specific to hunting dogs."""
     def __init__(self, name, age):
@@ -131,7 +133,7 @@ class HuntingDog(Dog):
         """ make the instances of the class callable, so they can be used as functions"""
         print(f"{self.name} go get the bird!")
 
-
+##
 my_hunting_dog = HuntingDog('Rocket', '3')
 my_hunting_dog.describe_experience()
 my_hunting_dog.set_experince(4)

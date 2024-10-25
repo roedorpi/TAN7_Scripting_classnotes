@@ -11,12 +11,14 @@ If a condition is evaluated as True, then Python executes the code following the
 
 If the test evaluates as False, then Python ignores the code following the if statement.
 """
+##
 reactions = ['hooray', 'great', 'oh no', 'omg', 'please stop']
 for reaction in reactions:
     if reaction == 'omg':
         print(reaction.upper())
     else:
         print(reaction)
+##
 """ 
 remember from boolean values:
 
@@ -31,9 +33,11 @@ remember from boolean values:
     and - requires both terms to be returned
     or - either terms (or both) will be returned
 """
+
 answer = 17
 if answer != 42:
     print("That is not the correct answer. Please try again!")  ## if/else
+##
 """
 if conditional test, then do something
 
@@ -48,7 +52,7 @@ if age >= 16:
 else:
     print("Sorry, you are not old enough to drink beer.")
     print("That better be apple juice in your cup!")
-
+#
 birthday = input("is it your birthday today? (yes/no) ")
 if birthday == 'yes':
     print("CONGRATULATIONS!")
@@ -59,8 +63,9 @@ else:
 if input("is it your birthday today? (yes/no) ") == "yes":
     print("congratulations!")
 else:
-    print("I'm sorry :(")  ## pass
+    print("I'm sorry :(")
 
+##
 # pass means nothing happens
 
 likesPizza = "yes"
@@ -69,11 +74,15 @@ pizzaTopping = "mushroom"
 if likesPizza == "no":
     pass
 else:
-    print(f"Preparing your favorite {pizzaTopping} pizza!")  ## if/elif/else chain
+    print(f"Preparing your favorite {pizzaTopping} pizza!")
+
+
+## if/elif/else chain
 """
 The if-elif-else chain is powerful, but it’s only appropriate to use when you just need one test to pass. 
 As soon as Python finds one test that passes, it skips the rest of the tests. This behavior is beneficial, 
-because it’s efficient and allows you to test for one specific condition.# if-elif-else chain
+because it’s efficient and allows you to test for one specific condition.
+# if-elif-else chain
 
 """
 # a pizza with 4 or fewer toppings costs DKK 89.
@@ -100,7 +109,7 @@ else:
 
 print(f"Your pizza costs DKK {price}.")
 
-# checking for special items in list:
+## checking for special items in list:
 
 requested_toppings = ['mushrooms', 'green peppers', 'extra cheese']
 
@@ -112,11 +121,12 @@ for requested_topping in requested_toppings:  # for every topping in list of req
 
 print("\nFinished making your pizza!")
 
+##
 # checking that a list is not empty:
 # create empty list
 requested_toppings = []
 
-if requested_toppings:  # if there is anything in requested toppings list
+if requested_toppings:  # evaluates to False if it is empty
     for requested_topping in requested_toppings:  # then for each individual topping from list
         print(f"Adding {requested_topping}.")  # print a message
     print(
@@ -124,7 +134,7 @@ if requested_toppings:  # if there is anything in requested toppings list
 else:  # otherwise (if there is nothing in requested topping list)
     print("Are you sure you want a plain pizza?")  # print a message
 
-# using multiple lists:
+## using multiple lists:
 available_toppings = ['mushrooms', 'olives', 'green peppers', 'pepperoni', 'pineapple', 'extra cheese']
 requested_toppings = ['mushrooms', 'french fries', 'extra cheese']
 
@@ -136,6 +146,7 @@ for requested_topping in requested_toppings:  # for every topping in requested t
 
 print("\nFinished making your pizza!")  ## break
 
+##
 """
 break stops execution of a loop
 
@@ -152,7 +163,7 @@ for requested_topping in requested_toppings:
         print(f"Adding {requested_topping}.")
 
 print("\nFinished preparing your order!")
-
+##
 """
 Error handling and the try -- except -- else -- finally conditional
 
@@ -170,9 +181,9 @@ the most common kind: typos, wrong indentation, etc.
 information about the error is included in the error message, and are generally highlighted in red in PyCharm
 """
 # uncomment the next two line to see a syntax error.
-# while True
+#while True
 #     print('Ok')
-
+##
 """    
 ## exceptions
 even if a statement or expression is syntactically correct, it may cause an error when we execute it.
@@ -182,12 +193,13 @@ But in Python, we can provide a meaningful message to the user about the issue r
 on a system-generated message (which is not always understandable anyway).
 """
 # examples of system generated error messages.
-10 * (1 / 0)
+10 * (1 / 0)   # ZeroDivisionError
 
-4 + spam * 3
+4 + spam * 3  # NameError
 
-'2' + 2
+'2' + 2  # TypeError
 
+##
 """
 ## exception handling using try -- except -- finally
 
@@ -229,17 +241,17 @@ else:
     print("That will be the number of cookies you get for dinner.")
 finally:  # finally is always executed regardless of the actions done about the error
     print("Don't forget to brush your teeth.")
-"""
+
 ## define something to be an error! the raise key word
-"""
+
 name = "Suzie"
 if len(name) < 10:
     raise ValueError(f"username {name} too short, must be minimum 10 characters.")
 
-"""
+
 ## example: doing math on user input
-I am writing code that will take user's input, and multiply it by 2
-"""
+# I am writing code that will take user's input, and multiply it by 2
+
 # simplest option
 userInput = float(input("Give me a number to multiply by 2: "))
 print(f"{userInput} * 2 = {userInput * 2}")
@@ -256,7 +268,7 @@ while active:
 
 # here my only input choices are numbers or "stop",
 # otherwise code crashes
-
+##
 while True:
     userInput = input("Give me a number to multiply by 2: ")
     if userInput == "stop":
@@ -267,6 +279,7 @@ while True:
         print(f"{userInput} * 2 = {float(userInput) * 2}")
 print("thanks for doing math with me!")
 
+##
 # The same result using try and not having to check all possibilities
 while True:
     userInput = input("Give me a number to multiply by 2: ")
@@ -280,7 +293,7 @@ while True:
         print(float(userInput) * 2)
 print("thanks for doing math with me!")
 
-# if the float() function fails because of a letter instead of a number.
+## if the float() function fails because of a letter instead of a number.
 while True:
     input1 = input("Type a number as the numerator: ")
     input2 = input("Type a number as the denominator: ")
@@ -300,7 +313,7 @@ while True:
         print("That was fun!")
 print("Thanks for calculating divisions with me. Bye!")
 
-# There can be several different except block, but only one else and finally blocks.
+## There can be several different except block, but only one else and finally blocks.
 # Several errors can also be combined into one except block. The draw-back is that all
 # errors are treated in the same way.
 while True:
