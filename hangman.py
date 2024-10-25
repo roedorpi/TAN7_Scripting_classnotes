@@ -7,6 +7,7 @@ class Hangman:
         self.userid = userid
         self.num_guesses = num_guesses
         self.output_string = []
+        self.randomWord = ''
 
     def draw_hangman(self):
         # method to draw hangman
@@ -25,7 +26,7 @@ class Hangman:
         # This function picks a random word from the SOWPODS dictionary.
         # open the sowpods dictionary as a text file in readable format
         curdir = os.getcwd()
-        filename = os.path.join(curdir, "csvfiles", "sowpods.txt")
+        filename = os.path.join(curdir, "sowpods.txt")
         with open(filename, 'r') as f:
             words = f.readlines()
 
@@ -36,15 +37,15 @@ class Hangman:
         # print out the word at that index
         # the .strip() function removes all trailing spaces before and after the word
         word = words[index].strip()
-        return word
-
+        #return word
+        self.randomWord = word
     def ask_user_for_next_letter(self):
         letter = input("Guess your letter: ")
         return letter.strip().upper()
 
-    def generate_word_string(self, word, letters_guessed):
+    def generate_word_string(self, letters_guessed):
         output = []
-        for letter in word:
+        for letter in self.randomWord:
             if letter in letters_guessed:
                 output.append(letter.upper())
             else:
