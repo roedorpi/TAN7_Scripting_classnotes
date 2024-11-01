@@ -10,6 +10,8 @@
 
 import pandas as pd
 import seaborn as sns
+import matplotlib
+matplotlib.use('TkAgg')
 
 # %%
 # step 2: load and check data
