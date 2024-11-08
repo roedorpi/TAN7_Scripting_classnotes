@@ -13,12 +13,14 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use("TkAgg")
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from wordcloud import WordCloud
 
-data = pd.read_csv("https://raw.githubusercontent.com/amankharwal/Website-data/master/dataset.csv")
+data = pd.read_csv("https://raw.githubusercontent.com/amankharwal/Website-data/master/dataset.csv",encoding='utf8')
 print(data.head())
 
 

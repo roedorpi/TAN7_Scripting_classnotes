@@ -19,6 +19,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import BernoulliNB
 from wordcloud import WordCloud
 from matplotlib import pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg')
 
 #load data
 data = pd.read_json("Sarcasm.json", lines=True)
@@ -48,7 +50,7 @@ model = BernoulliNB()
 model.fit(X_train, y_train)
 # test the model with the test set
 print(model.score(X_test, y_test))
-
+##
 # Get input from user
 user = input("Enter a Text: ")
 # process input to feed it to the model
