@@ -135,14 +135,14 @@ print(s[-8:0])
 print(s[:])
 print(s[-9:9])
 print(s[::2])
-
+##
 p = "The youngest pope was 11 years"
 x = p.split()
 y = f"{x[-2]} {x[2]}s"
 # y = x[-2] + " " + x[2] + "s" # alternative string assembling
 
 print(y)
-
+##
 fullName = "ALEKSANDRAKASZOWSKA"
 firstName = fullName[:10] # leaving the first one empty means "start from the beginning"
 lastName = fullName[10:] # leaving the second one empty means "go through to the end"
@@ -151,9 +151,8 @@ print(firstName, lastName)
 
 
 """
-changing elemenents in strings
+changing elements in a strings
 strings are immutable, meaning: once created, we cannot change the elements within the string
-
 to change a string, we need to make a new string:
 """
 name = "Aleksandra"

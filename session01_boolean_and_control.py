@@ -88,15 +88,43 @@ print(outcome)
 """ 
 For Loops... just the beginning. 
 The for loop has the key words "for", "in", and the ending ":"
-all statements in the tab group will be executed repeatedly until all the elements a collection of values.       
+all statements in the tab group will be executed repeatedly until all the elements in a collection of values has been processed. A collection of values can be any iterable object in python.         
 """
 my_string = "now things are starting to get serious"
-a = my_string[3]
-print(a)
 # Going through the elements of a string.
 for a in my_string:
     print(a)
-## here we use the function range(), that gives a set of values to iterate over. in this case from 0 to
-# the number of characters in the string minus 1 (why the minus one?).
+# use the split() method and make a list of words.
+for word in my_string.split():
+    print(word)
+
+##
+"""
+here we use the function range(), that gives a set of values to iterate over. in this case from 0 to the number of characters in the string minus 1 (why the minus one?). The index is used to extract each individual character from the string. 
+"""
 for i in range(len(my_string)-1):
     print(my_string[i])
+##
+"""
+Another from of repeating a chunk of code is using the while loop. The main difference with the for loop is that it does not run a specific number of times, it runs until a condition is met. This is useful if your code has to do something while waiting for something else to happen, like user input.  
+"""
+counter = 0
+while counter < len(my_string):
+    print(my_string[counter])
+    counter += 1
+
+
+##
+"""
+In Python almost all objects are iterable, this means that collections of variables like a list, a dictionary, an array containers that can be used in a for loop. Where each element of the container is processed in each cycle of the for loop. 
+"""
+# make a long string:
+sentence = "When working with collections of values you can iterate through the values with a for loop like this one."
+# separate the sentence in to words by splitting the sentence in the white spaces
+words = sentence.split()
+for word in words:
+    print(word.upper())
+    for letter in word:
+        print(letter.lower())
+
+
