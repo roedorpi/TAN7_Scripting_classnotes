@@ -8,7 +8,7 @@ name = input('What is your name?')
 status = input(f'so, {name}, how are you doing?')
 # the same as before but now with the format method of str objects
 name_and_status = "{0} is doing {1}".format(name, status)
-
+print(name_and_status)
 ## type cast the string input into an integer value
 age = int(input(f'{name}, how old are you?'))
 # try combining a string and an integer...
@@ -20,6 +20,7 @@ print(name_age_status)
 
 ## Make calculations with integers and floats.
 a = 5.3
+
 b = 3
 print(f'{a} is a float and {b} is an integer')
 # float divided by integer
@@ -35,8 +36,8 @@ d = int(a/b)
 print(f"we can cast the results to an integer with the int() function: int(a/b) = {d} or int(b/a) = {int(b/a)}")
 # casting a float to an integer will truncate the float.  
 ## remainder after division
-for i in range(0,24):
-    print(i % 12)
+for i in range(45,10,-2):
+    print(i,i % 12, i//12,i+i,3*i)
 
 #print(f'calculating the remainder after division 7 % 4 = {e}')
 
