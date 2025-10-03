@@ -61,13 +61,15 @@ temp_scale = input('What is the scale of the temperature (Fahrenheit (F) or Celc
 
 if temp_scale == 'F':
     temp_out = (temp_in - 32)*5/9
+    scale_out = 'C'
 elif temp_scale == 'C':
     temp_out = temp_in*9/5 + 32
+    scale_out = 'F'
 else:
     temp_out = None
     print('ups')
 
-print(f'The converted temperarure is: {temp_out} degrees {temp_scale}')
+print(f'The converted temperarure is: {temp_out} degrees {scale_out}')
 
 ##
 """
@@ -121,7 +123,8 @@ print(f'Repeated words: {repeated_words}')
 """
 Exercise 3b same as 3 but as a function
 """
-# function definition, notice that the only difference is the first line.
+# function definition, notice that the only difference is the UK
+# first line.
 def find_repeated_words():
     input_string = input('Write a long sentence with repeated words: ')
     sentence = input_string.split()

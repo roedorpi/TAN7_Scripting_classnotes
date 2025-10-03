@@ -99,6 +99,7 @@ elif howManyToppings <= 6:  # if there are 6 or fewer toppings (remember: we alr
 else:  # if our number of toppings is not between 0 and 6
     print("Your pizza costs DKK 129.")  # print message
 
+# or just use one print statement with an f-string
 howManyToppings = 8
 if howManyToppings <= 4:
     price = 89
@@ -287,7 +288,7 @@ while True:
         break
     try:
         num = float(userInput)  # assume here that conversion of text to number will work
-    except:
+    except ValueError:
         print("Not a number!")  # when conversion fails
     else:
         print(float(userInput) * 2)
@@ -307,14 +308,14 @@ while True:
         print("One of the numbers is not valid !")
     except ZeroDivisionError:
         print("The denominator cannot be 0!")
-    else: # if there are no errors we thrown
+    else: # if there are no errors thrown
         print("{}/{}={}".format(numb1, numb2, result))
     finally: # do this allways no matter which block (except or else) has been used.
         print("That was fun!")
 print("Thanks for calculating divisions with me. Bye!")
 
 ## There can be several different except block, but only one else and finally blocks.
-# Several errors can also be combined into one except block. The draw-back is that all
+# Several errors can also be combined into one except block. The drawback is that all
 # errors are treated in the same way.
 while True:
     input1 = input("Type a number as the numerator: ")
@@ -327,8 +328,70 @@ while True:
         result = numb1/numb2
     except (ZeroDivisionError, ValueError):
         print("One of the numbers is not valid or the denominator is 0! ")
-    else: # if there are no errors we thrown
+    else: # if there are no errors thrown
         print("{}/{}={}".format(numb1, numb2, result))
     finally: # do this allways no matter which block (except or else) has been used.
         print("That was fun!")
 print("Thanks for calculating divisions with me. Bye!")
+
+##
+"""Examples for the slides"""
+myVariable = 1000
+Value = 300
+while True:
+    if myVariable > Value:
+        myVariable = round(myVariable*0.8)
+    elif myVariable < Value:
+        myVariable = round(myVariable*1.2)
+    else:
+        break
+    print(myVariable)
+print(f"The adjusted value is: {myVariable}")
+
+Value = -300
+while True:
+    if myVariable > Value and Value > 0:
+        myVariable = round(myVariable*0.8)
+    elif myVariable < Value and Value > 0:
+        myVariable = round(myVariable*1.2)
+    else:
+        break
+    print(myVariable)
+print(f"The adjusted value is: {myVariable}")
+
+## Match and case
+day = 4
+match day:
+  case 1:
+    print("Monday")
+  case 2:
+    print("Tuesday")
+  case 3:
+    print("Wednesday")
+  case 4:
+    print("Thursday")
+  case 5:
+    print("Friday")
+  case 6:
+    print("Saturday")
+  case 7:
+    print("Sunday")
+  case _:
+    print("Not a day of the week")
+
+day = 4
+match day:
+  case 1 | 2 | 3 | 4 | 5:
+    print("Today is a weekday")
+  case 6 | 7:
+    print("I love weekends!")
+
+month = 5
+day = 4
+match day:
+  case 1 | 2 | 3 | 4 | 5 if month == 4:
+    print("A weekday in April")
+  case 1 | 2 | 3 | 4 | 5 if month == 5:
+    print("A weekday in May")
+  case _:
+    print("No match")

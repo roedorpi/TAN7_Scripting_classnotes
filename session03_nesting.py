@@ -38,15 +38,15 @@ print("...")
 print(f"Total number of apples in the basket: {len(fruit)}")
 
 ## modify first 3 fruit to be green pears and the next 5 to blue bananas
-count = 0
-for eachOne in fruit[:8]:
+
+for count, eachOne in enumerate(fruit[:8]):
     if eachOne['type'] == 'apple' and count < 3:
         eachOne['type'] = 'pear'
         eachOne['color'] = 'green'
     else:
         eachOne['type'] = 'banana'
         eachOne['color'] = 'blue'
-    count += 1
+
         
 # show the first 8 fruit
 for eachOne in fruit[:8]:
@@ -125,4 +125,7 @@ for username, user_info in users.items():
 
     print(f"\tFull name: {full_name.title()}")
     print(f"\tJob title: {position.title()}")
+
+
+
 

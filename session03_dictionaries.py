@@ -14,6 +14,8 @@ Starting with an empty dictionary: variableName = {}
 """
 ## creating a dictionary using the function
 pineapple = dict()
+#adding entries to the dictionary using a ['key'] as index and assigning a value.
+# these are the key-value pairs that are in a dictionary. Think of an actual dictionary!
 pineapple['key'] = 'value'
 pineapple['key2'] = 'value2'
 print(pineapple)
@@ -48,7 +50,7 @@ print(f"A pineapple in Danish is called {pineapple['Danish']} and is also {pinea
 
 ## add more features:
 pineapple['taste'] = 'acidic'
-pineapple['price'] = 16
+pineapple['price'] = 75
 print(pineapple)
 
 ## values are mutable
@@ -127,7 +129,7 @@ pineapple = {
     'Danish': 'ananas',
     'color': 'yellow',
     'taste': 'acidic',
-    'price': 16,
+    'price': 75,
     'size': 'medium'}
 
 for key, value in pineapple.items():

@@ -14,6 +14,7 @@ write a chatbot program:
 
 # assign variable names to input, and use those variables in fstrings in print input function always returns a string
 # for the math question, you can only add integers (cannot add strings to each other)
+# look up the eval() function on python documentation to evaluate math equations.
 
 
 """

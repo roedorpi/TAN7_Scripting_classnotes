@@ -48,6 +48,14 @@ pancakes: 1 1/2 cup flour, 3 1/2 teaspoons baking powder, 1/4 teaspoon salt,
 muffins:  2 cups flour, 3 teaspoons baking powder, 1/2 teaspoon salt, 
           3/4 cup sugar, 1 egg, 1 cup milk, 1/4 cup oil
 """
+ingredients = dict()
+ingredients["brownies"] = [[1.5, "cup", "sugar"], [0.75, "cup", "flour"],[0.66, "cup", "cocoa powder"],
+                           [0.5, "cup", "chocolate chips"], [2, "piece", "egg"], [0.5, "cup", "oil"],
+                           [2, "tablespoon", "water"],[0.5, "teaspoon", "vanilla"]]
+ingredients["pancakes"] = [[1.5, "cup", "flour"],[3.5, "teaspoon", "baking powder"],[0.25, "teaspoon", "salt"],
+                           [1, "cup", "milk"],[1, "tablespoon", "sugar"],[1, "piece", "egg"]]
+ingredients["muffins"] = [[2, "cup", "flour"],[3, "teaspoon", "baking powder"],[0.5, "teaspoon", "salt"],
+                          [0.75, "cup", "sugar"],[1, "cup", "milk"],[0.25, "cup", "oil"],[1, "piece", "egg"]]
 
 
 
