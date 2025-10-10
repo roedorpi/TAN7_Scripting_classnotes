@@ -2,7 +2,7 @@
 CONDITIONAL TESTS
 
 Definition: a conditional test allows you to check any condition of interest.
-his means that at the heart of every if statement, there is an expression that
+this means that at the heart of every if statement, there is an expression that
 can be evaluated as either True or False.
 
 Python uses True and False values to "decide" if a statement should be executed.

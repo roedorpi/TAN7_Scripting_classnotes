@@ -9,24 +9,25 @@ this means we do not need to use close() function later
 
 the .read() method reads the content of the entire file into a string.
 """
-with open('pi_digits.txt') as file_object:
+##
+with open('Frankenstein.txt',encoding='utf-8') as file_object:
     contents = file_object.read()
 print(contents)
 
-# alternative:
+## alternative:
 
-myFile = open('pi_digits.txt')
+myFile = open('Frankenstein.txt',encoding='utf-8')
 contents = myFile.read()
 myFile.close() # close file when no longer using it
 
 print(contents)
-
+##
 """
 Reading lines one by one.
 
 The file object is iterable and a for loop will take a new line at each iteration.  
 """
-# read file in line by line:
+#read file in line by line:
 
 filename = 'pi_digits.txt'
 
@@ -35,7 +36,7 @@ with open(filename) as file_object:
         print(line.rstrip())
 
 
-# make a list of lines from file using .readlines() with out a for loop.
+## make a list of lines from file using .readlines() with out a for loop.
 
 filename = 'pi_digits.txt'
 
@@ -51,6 +52,7 @@ for line in lines:
 # build a single string that contains all the digits in the file, no whitespaces:
 
 """
+##
 filename = 'pi_digits.txt'
 
 with open(filename) as file_object:
@@ -67,21 +69,31 @@ print(len(pi_string))
 ## large files: one million digits
 """
 ##
-import os
-
-curdir = os.getcwd()
-filename = os.path.join(curdir, "csvfiles","cats.csv")
-
+filename = 'pi_million_digits.txt'
 with open(filename) as file_object:
     lines = file_object.readlines()
-##
-pi_string = '' 
+
+pi_string = ''
 for line in lines:
     pi_string += line.strip()
     
 print(f"{pi_string}...")
 print(len(pi_string))
 
+## get files from a specific folder
+# os package for folder operations
+import os
+absolute_path_dir = "C:/Users/rop/Documents/DATA/courses/Scripting_TAN7/classnotes"
+curdir = os.getcwd() # get current directory
+relative_path_dir = "../classnotes"
+# add the name of the file with the join command to ensure correct path separator
+filename = os.path.join(absolute_path_dir,"cats.csv")
+with open(filename) as file_object:
+    lines = file_object.readlines()
+
+filename = os.path.join(relative_path_dir,"birthdays.csv")
+with open(filename,encoding='utf-8') as file_object:
+    lines = file_object.readlines()
 
 ## is your birthday contained in pi?
 
@@ -139,7 +151,7 @@ filename = 'alice.txt'
 
 with open(filename) as f:
     contents = f.read()
-
+##
 filename = 'alice.txt'
 
 try:
@@ -179,15 +191,29 @@ You can download the plain text file and use the .split() method to generate a l
 
 """
 ##
-title = "Alice in Wonderland"
-title.split() # splits by spaces
+"""
+Files can be saved with different encodings, that is different ways to map symbols to ascii code,
+you have probably experienced this when opening a file from a different language or operating system,
+where special characters are shown wrong. The open function allows you to specify the encoding of the file.
+Common Encodings
 
+"utf-8" – Most widely used encoding for Unicode text.
+"utf-16" – Unicode encoding with 2-byte characters.
+"utf-32" – Unicode encoding with 4-byte characters.
+"ascii" – Only supports characters in the ASCII range (0–127).
+"latin-1" (also "iso-8859-1") – Western European characters.
+"cp1252" – Windows encoding similar to Latin-1.
+"macroman" – Encoding used on older Mac systems.
+"big5" – Traditional Chinese characters.
+"gb2312" / "gbk" – Simplified Chinese characters.
+"shift_jis" – Japanese encoding.
+"euc-jp" – Another Japanese encoding.
+"cp437" – Original IBM PC encoding.
+
+"""
 
 filename = 'wonderland.txt'
-# files can be saved with different encodings, that is different ways to map symbols to ascii code,
-# you have probably experienced this when opening a file from a different language or operating system,
-# where special characters are shown wrong. The open function allows you to specify the encoding of the file.
-with open(filename, encoding='utf-8-sig') as f:
+with open(filename, encoding='utf-8') as f:
     contents_lines = f.readlines()
     contents = f.read()
     words = contents.split()
@@ -212,12 +238,14 @@ import os
 import csv
 
 curdir = os.getcwd()
-filename = os.path.join(curdir, "csvfiles","birthdays.csv")
+filename = os.path.join(curdir,"birthdays.csv")
 
 with open(filename, mode='w', newline="") as my_csv:
     csv_writer = csv.writer(my_csv, delimiter=';')
     csv_writer.writerow(["Name", "Birthday", "Cake"])
-    csv_writer.writerows([["jesus", "24/12/0", "apple cake"], ["Mohammed", "29/10/570", "brownies"], ["Dalai Lama", "6/7/1935", "rice cake"]])
+    csv_writer.writerows([["jesus", "24/12/0", "apple cake"],
+                          ["Mohammed", "29/10/570", "brownies"],
+                          ["Dalai Lama", "6/7/1935", "rice cake"]])
 
 ##
 with open('birthdays.csv') as csv_file:
@@ -226,16 +254,13 @@ with open('birthdays.csv') as csv_file:
     for row in csv_reader:
         if line_count == 0:
             print(f'Column names are: {", ".join(row)}')
-            line_count += 1
         else:
             print(f"\t{row[0]}'s birthday is in {row[1]}, and his/her favorite cake is {row[2]}.")
-            line_count += 1
+        line_count += 1
     print(f'Processed {line_count} lines.')
 
 
 ### reading csv files into a dicitonary
-
-
 with open('birthdays.csv', mode='r') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=';')
     col_names = csv_reader.fieldnames
@@ -244,7 +269,8 @@ with open('birthdays.csv', mode='r') as csv_file:
         if line_count == 0: # the first line in the file is assumed to contain keys
             print(f'Column names are {", ".join(row)}')
             line_count += 1
-        print(f"\t{row[col_names[0]]}'s birthday is in {row[col_names[1]]}, and his/her favorite cake is {row[col_names[2]]}.")
+        print(f"\t{row[col_names[0]]}'s birthday is in {row[col_names[1]]}, "
+            f"and his/her favorite cake is {row[col_names[2]]}.")
         line_count += 1
     print(f'Processed {line_count} lines.')
 
@@ -255,7 +281,6 @@ import csv
 with open('cats.csv', mode='r') as csv_file:
     csv_reader = csv.DictReader(csv_file, delimiter=',', fieldnames=['name', 'color', 'adj']) # when first line is not keys
     line_count = 0
-    csv_reader.restkey()
     print(f'Column names are {", ".join(csv_reader.fieldnames)}')
     for row in csv_reader:
         print(f"\t{row['name']} is a {row['color']} cat who is simply {row['adj']}.")

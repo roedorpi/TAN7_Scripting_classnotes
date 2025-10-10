@@ -32,30 +32,51 @@ part c
 using the same recipes, allow the user to add new recipes to the cookbook using a while loop, the
 new recipes have to maintain the same format as the existing recipes.
 """
-"""
-recipes
-
-Each recipe is for 1 portion, and 1 portion can feed 4 people - if you want to make enough for just 
-one person, then you need 1/4 portion):
-
-brownies: 1 1/2 cups sugar, 3/4 cups flour, 2/3 cup cocoa powder, 1/2 cup sugar, 
-          1/2 cup chocolate chips, 3/4 teaspoon salt, 2 eggs, 1/2 cup oil, 
-          2 tablespoons water, 1/2 teaspoon vanilla
-
-pancakes: 1 1/2 cup flour, 3 1/2 teaspoons baking powder, 1/4 teaspoon salt, 
-          1 tablespoon sugar, 1 egg, 3 tablespoons butter, 1 cup milk
-
-muffins:  2 cups flour, 3 teaspoons baking powder, 1/2 teaspoon salt, 
-          3/4 cup sugar, 1 egg, 1 cup milk, 1/4 cup oil
-"""
-ingredients = dict()
-ingredients["brownies"] = [[1.5, "cup", "sugar"], [0.75, "cup", "flour"],[0.66, "cup", "cocoa powder"],
+##
+Recipes = dict()
+Recipes["brownies"] = [[1.5, "cup", "sugar"], [0.75, "cup", "flour"],[0.66, "cup", "cocoa powder"],
                            [0.5, "cup", "chocolate chips"], [2, "piece", "egg"], [0.5, "cup", "oil"],
                            [2, "tablespoon", "water"],[0.5, "teaspoon", "vanilla"]]
-ingredients["pancakes"] = [[1.5, "cup", "flour"],[3.5, "teaspoon", "baking powder"],[0.25, "teaspoon", "salt"],
+Recipes["pancakes"] = [[1.5, "cup", "flour"],[3.5, "teaspoon", "baking powder"],[0.25, "teaspoon", "salt"],
                            [1, "cup", "milk"],[1, "tablespoon", "sugar"],[1, "piece", "egg"]]
-ingredients["muffins"] = [[2, "cup", "flour"],[3, "teaspoon", "baking powder"],[0.5, "teaspoon", "salt"],
+Recipes["muffins"] = [[2, "cup", "flour"],[3, "teaspoon", "baking powder"],[0.5, "teaspoon", "salt"],
                           [0.75, "cup", "sugar"],[1, "cup", "milk"],[0.25, "cup", "oil"],[1, "piece", "egg"]]
+##
+""" 
+Part a
+"""
+
+NumberOfPortions  = 1
+Dish = 'brownies'
+for dish, ingredients in Recipes.items():
+    if dish == Dish:
+        print(f"The {dish} dish for {NumberOfPortions} portions needs following ingredientes and quantities:")
+        for ingredient in ingredients:
+            print(f"\t{ingredient[2]}:{ingredient[0]/4*NumberOfPortions}--{ingredient[1]} ")
+
+
+
+
+##
+
+InKitchen = []
+Active = True
+while Active:
+    NewInKitchen = []
+    newigredient = input("write the ingredient, the quantity and the unit of measure? ").split()
+    if newigredient[0].strip() == "stop":
+        break
+    for element in newigredient:
+        element.strip()
+    try:
+        quantity = float(newigredient[1])
+    except:
+        print("the second input must be a number")
+    else:
+        NewInKitchen.append(quantity)
+        NewInKitchen.append(newigredient[2])
+        NewInKitchen.append(newigredient[0])
+    InKitchen.append(NewInKitchen)
 
 
 

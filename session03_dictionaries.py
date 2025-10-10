@@ -272,5 +272,28 @@ for veggie in list_of_strings:
 
 print(count_words)
 
+##
+PowersOfTwo = dict()
+for x in range(-10, 11):
+    if x%2!=0 and 2**x > 1:
+        PowersOfTwo[x] = 2**x
+
+print(PowersOfTwo)
+##
+
+PowersOfTwo = {x:2**x for x in range(-10,11) if x%2!=0 and 2**x > 1}
+print(PowersOfTwo)
+##
+myDict = dict()
+myDict['a'] = ['airbag', 'airplain']
+myDict['b'] = ['borring','beer']
+myDict['c'] = ['casual', 'colosus']
+myDict['d'] = ['door', 'donkey','dumb']
+keyName = 'f'
+if keyName in myDict.keys():
+    for word in myDict[keyName]:
+        print(word)
+
+
 
 
