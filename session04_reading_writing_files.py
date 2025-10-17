@@ -370,3 +370,15 @@ with open('TAN7_other.csv', mode='w', newline='') as TAN7_file: # why newline=''
         if repeat == 'n':
             writing_active = False
 
+
+##
+
+import time
+i = 0
+t = time.time()
+while i<5:
+    t1 = time.time()
+    if (t1-t>2):
+        print('word')
+        i+=1
+        t = time.time()

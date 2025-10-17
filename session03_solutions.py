@@ -218,6 +218,8 @@ flour, then cup, then 1.")
 """
 while newIngredientCount < howManyIngredients:
     whatIngredient = input(f"enter ingredient {newIngredientCount + 1}: ")
+    if (whatIngredient == 'stop'):
+        break
     whatMeasureIng = input("how is it measured? (options: cup, tablespoon, teaspoon, piece): ")
     howMuchIng = float(input("how much is needed? "))
 

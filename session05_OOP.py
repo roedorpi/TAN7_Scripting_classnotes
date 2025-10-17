@@ -36,7 +36,8 @@ class Dog:
         self.age = age
 
     def print_info():
-        # functions accessible only by the class
+        # functions accessible only by the class as a method
+        # of the class name: Dog.print_info()
         print("This is a class for making dogs")
 
     def how_many_legs(self):
@@ -111,11 +112,11 @@ my_hunting_dog.sit()
 ##
 class HuntingDog(Dog):
     """Represents aspects and skills of a dog specific to hunting dogs."""
-    def __init__(self, name, age):
+    def __init__(self, name, age, experience):
         """First, initialize attributes of the parent class.
         Second, initialize attributes specific to hunting dog."""
         super().__init__(name, age)
-        self.hunting_experience = 0
+        self.hunting_experience = experience
 
     def describe_experience(self):
         """print statement explaining dog's hunting experience in years.

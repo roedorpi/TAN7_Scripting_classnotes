@@ -8,7 +8,7 @@ import nltk # natural language tool kit.
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-matplotlib.use('TkAgg') # back end
+matplotlib.use('TkAgg') # back end for windows systems
 #nltk.download()
 
 ## import text material from nltk.

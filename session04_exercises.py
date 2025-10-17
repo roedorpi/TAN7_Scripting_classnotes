@@ -24,6 +24,6 @@ import sys   # operating system, used to terminate program in case of error
 import os.path as path  # operating systems file commands used to check if a file exists.
 
 ##
-# Checking the results... if you answer all 10 statements 1, 3 or 5 then the results should be 50.
+# Checking the results... if you used the SUS scale answer all 10 statements 1, 3 or 5 then the results should be 50.
 # if you answer all odd statements with 5 and all even statements with 1 then the results should be 100.
 # if you answer all odd statements with 1 and all even statements with 5 then the results should be 0.

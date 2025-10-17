@@ -15,8 +15,7 @@ Methods:
 
 @author: rop
 """
-from PySimpleGUI import Radio, Text
-
+from tkinter import *
 
 class RadioButtonScale():
     def __init__(self, ScaleSteps=7, ScaleLabels=['Disagree', 'Agree']):
@@ -24,7 +23,7 @@ class RadioButtonScale():
         self.ScaleLabels = ScaleLabels
         self.Labels = [Text(ScaleLabels[0], justification='left'),
                        Text(ScaleLabels[1], justification='right', expand_x=True, pad=((0, 0), (0, 0)))]
-        self.Layout = [Radio(str(i + 1), group_id="Scale", expand_x=True, pad=((10, 0), (10, 10)),
+        self.Layout = [Radiobutton(str(i + 1), group_id="Scale", expand_x=True, pad=((10, 0), (10, 10)),
                              k=i + 1, disabled=True) for i in range(ScaleSteps)]
 
     def ResetRadio(self):
