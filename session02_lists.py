@@ -65,7 +65,7 @@ Nested lists
 #             [0   ,   1    ,  2]       -> Second elements of First list is a three element list
 #                 [0 , 1 , 2]           -> Second elements of Second list is also a three element list
 #                     [0]               -> Second element of Third list is the last list with one element.
-funlist = [1, [2, [3, [4], 5], 6], 7]
+funlist = ['a', ['b', ['c', ['d'], 'e'], 'f'], 'g']
 print(funlist[1])
 print(funlist[1][0]) # print the zero element of element 1
 print(funlist[1][1][1][0]) # element 4
