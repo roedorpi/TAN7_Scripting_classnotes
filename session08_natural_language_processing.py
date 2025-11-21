@@ -15,8 +15,6 @@ text4.dispersion_plot(["man","people","freedom","arms","woman"])
 plt.show()
 
 
-
-
 ##
 # find maches and show their context
 text1.concordance('monster')

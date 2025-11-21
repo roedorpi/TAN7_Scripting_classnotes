@@ -41,30 +41,30 @@ def plot_top_words(model, feature_names, n_top_words, title):
 
 
 # load some data in this case is the novel Frankenstein
-with open('pg41445.txt', encoding='utf-8-sig', newline=None) as file_object:
-    contents = file_object.read()
-contents_ = contents.split('.')
-chapters = list()
-for i in range(0, len(contents_)-1):
-    contents_[i] = re.sub('\n', '', contents_[i])
-    if len(contents_[i]) > 20 and 'IN THREE VOL' not in contents_[i]:
-        chapters.append(contents_[i])
-
-chapters = chapters[11:-107]
+# with open('Frankenstein.txt', encoding='utf-8-sig', newline=None) as file_object:
+#     contents = file_object.read()
+# contents_ = contents.split('.')
+# chapters = list()
+# for i in range(0, len(contents_)-1):
+#     contents_[i] = re.sub('\n', '', contents_[i])
+#     if len(contents_[i]) > 20 and 'IN THREE VOL' not in contents_[i]:
+#         chapters.append(contents_[i])
+#
+# chapters = chapters[11:-107]
 
 # Load the 20 newsgroups dataset and vectorize it. We use a few heuristics
 # to filter out useless terms early on: the posts are stripped of headers,
 # footers and quoted replies, and common English words, words occurring in
 # only one document or in at least 95% of the documents are removed.
-# print("Loading dataset...")
+print("Loading dataset...")
 t0 = time()
-# data, _ = fetch_20newsgroups(
-#     shuffle=True,
-#     random_state=1,
-#     remove=("headers", "footers", "quotes"),
-#     return_X_y=True,
-# )
-data_samples =  chapters #data[:n_samples]
+data, _ = fetch_20newsgroups(
+    shuffle=True,
+    random_state=1,
+    remove=("headers", "footers", "quotes"),
+    return_X_y=True,
+)
+data_samples =  data[:n_samples]
 print("done in %0.3fs." % (time() - t0))
 
 # Use tf-idf features for NMF.

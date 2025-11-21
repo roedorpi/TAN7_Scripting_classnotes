@@ -12,3 +12,6 @@ class DataClass():
         self.responses.append(response)
         with open(self.datafile,'a') as file:
             file.write(StringToFile + ',' + tid)
+
+    def getdata(self,index=0):
+        return self.responses[index]

@@ -27,7 +27,7 @@ datasaurus_data
 # What do you notice about the descriptive statistics for each dataset? How do those datasets compare?
 
 grouped = datasaurus_data.groupby('dataset')
-grouped.agg({'x': ['count', 'mean', 'std'], 'y': ['count', 'mean', 'std']})
+summary_data = grouped.agg({'x': ['count', 'mean', 'std'], 'y': ['count', 'mean', 'std']})
 
 ## %%
 # step 4: scatterplot of all data, regardless of dataset
@@ -56,4 +56,9 @@ sns.scatterplot(data=grouped.get_group("away"), x='x', y='y')
 # 
 # What does this scatterplot tell us about our data?
 
-sns.relplot(data=datasaurus_data, x='x', y='y', col='dataset', col_wrap=3)
+#sns.relplot(data=datasaurus_data, x='x', y='y', col='dataset', col_wrap=4)
+
+sns.violinplot(data=datasaurus_data, x='dataset',y='x')
+
+sns.violinplot(data=datasaurus_data, x='dataset',y='y')
+

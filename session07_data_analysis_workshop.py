@@ -119,12 +119,13 @@ helmets_df.to_csv('outFile.csv',sep=";")
 helmets_df = pd.read_csv('outFile.csv', delimiter=";")
 sns.scatterplot(data=helmets_df, x='BART', y='SSS_total', hue='Condition', style='Condition')
 plt.show()
+sns.scatterplot(data=helmets_df, x='STAI_S_Y_PRE', y='SSS_total', hue='Condition', style='Condition')
 
 ## Linear model plotting by groups according to condition helment or cap
 cap_df = helmets_df[helmets_df.Condition == 1]
 hel_df = helmets_df[helmets_df.Condition == 2]
 
-sns.lmplot(x='BART', y='SSS_total', data=cap_df, ci=None).figure.suptitle("condition = cap")
+sns.lmplot(x='BART', y='SSS_total', data=cap_df).figure.suptitle("condition = cap")
 sns.lmplot(x='BART', y='SSS_total', data=hel_df, ci=None).figure.suptitle("condition = helmet")
 
 sns.lmplot(x='BART', y='SSS_total', hue='Condition', data=helmets_df)
@@ -139,7 +140,7 @@ sns.lmplot(x="BART", y="SSS_total", hue="Condition", col="Sex", data=helmets_df)
 ## ## histograms
 sns.displot(helmets_df, x='BART',bins=15, kde=False)
 
-sns.displot(helmets_df, x='BART', hue='Condition', kde=True)
+sns.displot(helmets_df, x='BART', hue='Condition', multiple='dodge', kde=True)
 
 sns.displot(helmets_df, x='BART', hue='Condition', multiple='dodge',bins=10, col='Sex', kde=True)
 

@@ -20,13 +20,36 @@ summary of how it works:
 
 Here's an example of how the program works with some sample interview data:
 """
-
+##
 import re
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg', force=True)
+# import function for plotting
+#from session08_NMF_LDA import plot_top_words
+def plot_top_words(model, feature_names, n_top_words, title):
+    fig, axes = plt.subplots(2, 3, figsize=(30, 15), sharex=True)
+    axes = axes.flatten()
+    for topic_idx, topic in enumerate(model.components_):
+        top_features_ind = topic.argsort()[-n_top_words:]
+        top_features = feature_names[top_features_ind]
+        weights = topic[top_features_ind]
+
+        ax = axes[topic_idx]
+        ax.barh(top_features, weights, height=0.7)
+        ax.set_title(f"Topic {topic_idx +1}", fontdict={"fontsize": 10})
+        ax.tick_params(axis="both", which="major", labelsize=10)
+        for i in "top right left".split():
+            ax.spines[i].set_visible(False)
+        fig.suptitle(title, fontsize=15)
+
+    plt.subplots_adjust(top=0.90, bottom=0.05, wspace=0.90, hspace=0.3)
+    plt.show()
 
 
-# Function to clean and preprocess the text data
+## Function to clean and preprocess the text data
 def preprocess_text(text):
     # Remove non-alphabetic characters and convert to lowercase
     text = re.sub(r'[^a-zA-Z\s]', '', text).lower()
@@ -39,7 +62,7 @@ def thematic_analysis(text_data, num_topics=5, num_words=10):
     cleaned_data = [preprocess_text(text) for text in text_data]
 
     # Vectorize the text data
-    vectorizer = CountVectorizer(stop_words='english')
+    vectorizer = CountVectorizer(ngram_range=(1,2), max_df=0.8, min_df=1, stop_words='english')
     text_matrix = vectorizer.fit_transform(cleaned_data)
 
     # Perform LDA
@@ -52,7 +75,7 @@ def thematic_analysis(text_data, num_topics=5, num_words=10):
     for topic_idx, topic in enumerate(lda.components_):
         topic_words = [words[i] for i in topic.argsort()[:-num_words - 1:-1]]
         topics.append(topic_words)
-
+    plot_top_words(lda, words, 10, "Topics in LDA model")
     return topics
 
 
@@ -64,9 +87,19 @@ interview_data = [
     "The new policy is okay. It has its pros and cons.",
     "I love the new policy! It has made my work much easier."
 ]
+# load some data in this case is the novel Frankenstein
+with open('Frankenstein.txt', encoding='utf-8-sig', newline=None) as file_object:
+    contents = file_object.read()
+contents_ = contents.split('.')
+chapters = list()
+for i in range(0, len(contents_)-1):
+    contents_[i] = re.sub('\n', '', contents_[i])
+    if len(contents_[i]) > 20 and 'IN THREE VOL' not in contents_[i]:
+        chapters.append(contents_[i])
 
+chapters = chapters[11:-107]
 # Perform thematic analysis on the interview data
-topics = thematic_analysis(interview_data)
+topics = thematic_analysis(chapters)
 
 # Print the identified topics and their corresponding words
 for idx, topic in enumerate(topics):
