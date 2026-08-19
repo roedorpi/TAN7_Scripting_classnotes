@@ -48,7 +48,7 @@ print(f"using list comprehension, output: {[pos for pos, char in enumerate(strin
 
  https://docs.python.org/3/library/re.html
 """
-
+##
 import re # RegEx module
 
 # example of how RegEx work
@@ -58,6 +58,7 @@ import re # RegEx module
 mytext = 'The rain in Spain'
 x = re.search("^The.*Spain$", mytext)
 print(x)
+
 """
 note that the output looks like this:
 <re.Match object; span=(0, 17), match='The rain in Spain'>
@@ -70,7 +71,7 @@ functions that allow us to search a string for a match:
 - split - returns a list where the string has been split at each match
 - sub - replaces one or many matches with a string
 """
-
+##
 mytext = 'The rain in Spain'
 
 # findall()
@@ -98,9 +99,10 @@ print(f"split result, but split only at the first occurence: {x}")
 x = re.sub("Spain", "potato", mytext)
 print(f"sub result: {x}")
 
-x = re.sub('i', 'e', mytext, 3)
+x = re.sub('i', 'e', mytext, 2)
 print(f"sub result with count parameter: {x}")
 
+##
 """
 re.finditer() returns an interator that enables you to loop over the regex matches
 in the subject string

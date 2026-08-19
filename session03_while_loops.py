@@ -2,16 +2,16 @@
 # # WHILE LOOPS
 # definition: a while-loop keeps running as long as (or: while) a certain condition is true
 # (for comparison, a for-loop executes a block of code once FOR each item in a list etc.)
-
-# example: using a while loop to count down from 1 to 5
 """
+## example: using a while loop to count down from 1 to 5
+
 current_number = 1 # current number counter: starts at 1
 while current_number <= 5: # while current numbers is less or equal than five
     print(current_number) # print that number
     current_number += 1 # increase current number counter by 1
 
 
-# example with input function: let the user decide when to quit
+## example with input function: let the user decide when to quit
 prompt = "\nTell me something, and I will repeat it back to you:"
 prompt += "\nEnter 'quit' to end the program. "
 message = ""
@@ -21,8 +21,9 @@ while message.strip() != 'quit':
         print(message)
 
 
-""" 
+
 ## using a flag
+"""
 in more complicated programs, there's usually more than one event that could stop the program from running
 think about computer games: there are many ways to end the game, such as running out of time, running out 
 of items, etc. Trying to test all those conditions with individual while statements becomes complicated and 
@@ -35,7 +36,7 @@ A flag set to true means program runs. A flag set to false means program stops.
 prompt = "\nTell me something, and I will repeat it back to you:"
 prompt += "\nEnter 'quit' to end the program. "
 
-active = True # this is our flag!
+active = True  # this is our flag!
 
 while active: 
     message = input(prompt)
@@ -46,8 +47,9 @@ while active:
         print(message)
 
 
-"""
+
 ## using break to exit a loop
+"""
 to exit a while loop immediately and without running any remaining code regardless of anything, 
 use the break statement 
 
@@ -63,8 +65,9 @@ while True:
     else:
         print(f"I'd love to go to {city.title()}!")
 
-"""
+
 ## using continue in a loop
+"""
 return to the beginning of the loop based on the result of a conditional test 
 """
 # count from 1 to 10, but only print odd numbers:
@@ -75,17 +78,17 @@ while current_number < 10:
         continue # continue, or ignore rest of loop, and return to beginning
     print(current_number)
 
-"""
+
 ## infinite loops
-"""
+
 # this code will run until you terminate it!
 x = 1
 while x <= 5:
     print(x)
 
-"""
-## using a while loop with lists and dictionaries
 
+## using a while loop with lists and dictionaries
+"""
 moving items from one list to another
 
 example: you have a list of homework for courses you need to finish. 
@@ -98,19 +101,19 @@ finished_homework = []
 
 # finish each homework until there is no more unfinished homework. 
 # Move each finished homework into the list of finished homework.
-while unfinished_homework:
+while unfinished_homework:  # empty list will evaluate to False
     current_homework = unfinished_homework.pop()
     print(f"Doing homework: {current_homework}")
     finished_homework.append(current_homework)
     
-# Display all confirmed users.
+# Display all finished homework.
 print("\nThe following homework is finished:")
 for finished_course in finished_homework:
     print(finished_course)
 
 
 
-# removing all instances of specific values from a list
+## removing all instances of specific values from a list
 # (cats don't get along with other pets)
 
 pets = ['dog', 'cat', 'dog', 'goldfish', 'cat', 'rabbit', 'cat']
@@ -121,7 +124,7 @@ while 'cat' in pets:
     print(pets)
 
 
-# filling a dictionary with user input:
+## filling a dictionary with user input:
 responses = {}
 # Set a flag to indicate that polling is active.
 polling_active = True

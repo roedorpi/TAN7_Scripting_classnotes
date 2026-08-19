@@ -10,15 +10,17 @@ definition: a string is a series of characters inside "" or '' quotes
 "One of Python's strengths is its diverse and supportive community."
 """"It isn't," she said."""
 
-#strings can also be variables:
+##strings can also be variables:
 
 string1 = "this is a string."
 str(5)
 
 # concatenation
 "Alek" + "sandra"
+
+##
 """
-changing case in a string with methods
+Changing case in a string with methods
 definition: a method is an action that python can perform on a piece of data
 
 the "." tells python to make the title() method act on the variable name
@@ -133,14 +135,14 @@ print(s[-8:0])
 print(s[:])
 print(s[-9:9])
 print(s[::2])
-
+##
 p = "The youngest pope was 11 years"
 x = p.split()
 y = f"{x[-2]} {x[2]}s"
 # y = x[-2] + " " + x[2] + "s" # alternative string assembling
 
 print(y)
-
+##
 fullName = "ALEKSANDRAKASZOWSKA"
 firstName = fullName[:10] # leaving the first one empty means "start from the beginning"
 lastName = fullName[10:] # leaving the second one empty means "go through to the end"
@@ -149,9 +151,8 @@ print(firstName, lastName)
 
 
 """
-changing elemenents in strings
+changing elements in a strings
 strings are immutable, meaning: once created, we cannot change the elements within the string
-
 to change a string, we need to make a new string:
 """
 name = "Aleksandra"

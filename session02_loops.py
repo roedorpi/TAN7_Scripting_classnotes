@@ -1,3 +1,4 @@
+##
 """
 FOR LOOPS
 definition: a for loop is a definite iteration, which means the same block of code will
@@ -10,14 +11,23 @@ items there are: for a million items, there will be a million iterations
 kittens = ['whiskers', 'fluffy', 'tiger', 'salem']
 for cat in kittens:
     print(cat.title())
+##
 """
 you can put however many items or commands you want inside the loop
 """
-kittens = ['whiskers', 'fluffy', 'tiger', 'salem']
+kittens = ['whiskers', 'fluffy', 'tiger', 'salem', 'marla', 'guadalupe', 'garfield']
 for cat in kittens:
     print(f"{cat.title()} is the fluffiest cat in the world!")
     print(f"I love {cat.title()} so much.\n")
+    if cat=='marla':
+        print(f"{cat.title()} is a grumpy cat ")
+    if cat=='guadalupe':
+        print(f"{cat.title()} cannot stay out of the trash!")
 
+print(f'{cat.title()} damm that cat!')
+print(f'{kittens[-1].title()} damm that cat!')
+
+##
 """
 Python relies on indentation to determine how a line, or a group of lines, is related 
 to the rest of the program to leave a loop, go back an indent
@@ -45,8 +55,10 @@ counting at the first value you give it, and it stops when it reaches the second
 Because it stops at that second value, the output never contains the end value, which would have been 
 5 in this case. To print the numbers from 1 to 5, you would use range(1, 6).
 """
+##
 for value in range(1, 5):
     print(value)
+##
 """
 if you only give range() a number of items you want to get, without the starting item, it will start at 0:
 """
@@ -106,7 +118,7 @@ print(squares)
 Looping through a slice of a list
 """
 kittens = ['whiskers', 'fluffy', 'tiger', 'salem', 'tina']
-for cat in kittens[:3]:
+for cat in kittens[2:3]:
     print(cat.title())
 
 """

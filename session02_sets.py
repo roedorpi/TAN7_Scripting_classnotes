@@ -1,3 +1,4 @@
+##
 """
 SETS
 definition: a collection of unique items without a particular order (position does not matter in sets),
@@ -11,6 +12,8 @@ s4 = {1, "two", 3.0} # mixing is allowed
 s5 = {1, 1, 1} # three identical integers, try printing it and see what happens
 
 type(s1)
+##
+
 """
 you can also use the len() function with sets
 
@@ -26,15 +29,12 @@ add items to set
 myset = set()
 myset.add(1)
 print(myset)
-
+##
 """
 Remove items from set
 .discard() leaves the set unchanged if the element is not present in the set
-
 .remove() will raise an error if element is not present in the set
-
 if you use .pop() then a random item will be removed, since sets are unordered
-
 .clear() will also remove all the items from a set
 """
 s1 = {1, 2, 3, 4, 5, 6}
@@ -49,15 +49,18 @@ print(s1)
 
 s1.remove(7)
 print(s1)
+
+##
 """
 set operations
 set union: | a set of all elements from both sets; it can also be accomplished using .union() method
 """
-
 A = {1, 2, 3}
 B = {4, 5, 6}
 print(A | B)
 print(A.union(B))
+
+##
 """
 set intersection: & a set of elements that are common in both sets; it can also be accomplished 
 using the .intersection() method
@@ -67,16 +70,18 @@ A = {1, 2, 3, 4, 5}
 B = {4, 5, 6, 7, 8}
 print(A & B)
 print(A.intersection(B))
+
+##
 """
 set difference: - a set of elements that are only in A but not in B; it can also be accomplished 
 using the .difference() method
 """
-
 A = {1, 2, 3, 4, 5}
 B = {4, 5, 6, 7, 8}
 print(A - B)
 print(A.difference(B))
 
+##
 """
 set symmetric difference: ^ a set of elements in A and B but not in both; it can also be accomplished 
 using the .symmetric_difference() method
@@ -85,6 +90,7 @@ A = {1, 2, 3, 4, 5}
 B = {4, 5, 6, 7, 8}
 print(A ^ B)
 print(A.symmetric_difference(B))
+## Examples
 
 odd = {1,3,5,7,9,11,13,15,17,19,21,23,25}
 squares = {1,4,9,16,25}
@@ -100,7 +106,7 @@ print(squares&powers)
 allnumbers = set(range(1, 26))  # All numbers from beginning to end, but leaves off the last one.
 all_odd_sqr_power = odd | squares | powers
 print(allnumbers - all_odd_sqr_power)
-
+##
 """
 set membership test
 we can test if item exists in a set or not
@@ -108,7 +114,7 @@ we can test if item exists in a set or not
 A = {1, 2, 3, 4, 5}
 7 in A
 
-
+##
 """
 Manipulating sets
 """
@@ -116,7 +122,7 @@ Manipulating sets
 inFridge = {'milk', 'butter', 'sour cream', 'eggs', 'orange juice', 'cola', 'ketchup', 'mayo'}
 inFreezer = {'ice cream', 'ice', 'pizza'}
 inCabinet = {'tomato sauce', 'garlic', 'basil', 'pepper', 'salt', 'rice', 'beans', 'nutella'}
-inBar = {'gin', 'rum'}
+inBar = {'gin', 'rum', 'whisky'}
 
 # define what you need to cook the menu
 starter = {'nacho chips', 'cheddar', 'salsa', 'avocado', 'sour cream'}
@@ -133,7 +139,7 @@ inFridge.discard('milk')  # if the item does not exist it does nothing
 allAtHome = inFridge | inFreezer | inCabinet | inBar
 allNeeded = starter | main | dessert | drinks
 shoppingList = allNeeded - allAtHome
-
+##
 # your guests want to drink gin and tonics (gin, tonic, ice, and limes) at dinner; what should they bring?
 # hint: they need to bring ingredients that are required for gin and tonic
 # hint: there is no need to bring ingredients that are in your kitchen and on your shopping list

@@ -12,19 +12,21 @@ You can have an unlimited number of key-value pairs in a dictionary
 
 Starting with an empty dictionary: variableName = {}
 """
-# creating a dictionary using the function
+## creating a dictionary using the function
 pineapple = dict()
+#adding entries to the dictionary using a ['key'] as index and assigning a value.
+# these are the key-value pairs that are in a dictionary. Think of an actual dictionary!
 pineapple['key'] = 'value'
 pineapple['key2'] = 'value2'
 print(pineapple)
-# using {} and : to separate each key and value, key and value here correspond to actual inputs
+## using {} and : to separate each key and value, key and value here correspond to actual inputs
 pineapple = {'key': 'value', 'key2': 'value2'}
 print(pineapple)
 # if you use just {} without : you will end up with a set, not a dictionary
 pineapple_not_a_dict = {'key', 'value', 'key2', 'value2'}
 print(pineapple_not_a_dict)
 
-# a silly dictionary showing the mapping of keys to values:
+## a silly dictionary showing the mapping of keys to values:
 
 numbers = dict()
 numbers[1] = "one"
@@ -35,28 +37,29 @@ print(numbers)
 numbers[20] = "twenty"
 numbers[21] = numbers[20]+ " " +numbers[1]
 print(numbers)
-
+##
 alsoNumbers = dict()
 alsoNumbers['one'] = 1
 alsoNumbers['two'] = 2
 alsoNumbers['three'] = 3
 print(alsoNumbers)
 
-# a simple dictionary:
+## a simple dictionary:
 pineapple = {'Danish': 'ananas', 'color': 'yellow'}
 print(f"A pineapple in Danish is called {pineapple['Danish']} and is also {pineapple['color']}!")
 
-# add more features:
+## add more features:
 pineapple['taste'] = 'acidic'
-pineapple['price'] = 16
+pineapple['price'] = 75
 print(pineapple)
-# values are mutable
+
+## values are mutable
 print(f"Pineapples are {pineapple['color']}.")
 
 pineapple['color'] = 'green'
 print(f"Pineapples are now {pineapple['color']}.")
 
-# keys are immutable.
+## keys are immutable.
 # Example script for adding you own item to the dictionary
 lastnames = dict()  # define an empty dictionary
 # add key:value pairs
@@ -82,7 +85,7 @@ else:
 print("thank you!")
 print(lastnames)
 
-# determine how many people can eat one pineapple for dinner based on it's size
+## determine how many people can eat one pineapple for dinner based on it's size
 pineapple = {'Danish': 'ananas', 'color': 'yellow', 'taste': 'acidic', 'price': 16, 'size': 'medium'}
 
 if pineapple['size'] == 'small':
@@ -97,7 +100,8 @@ pineapple['ate today'] = 2
 canFeed = feed - pineapple['ate today']
 
 print(f"The pineapple can feed {canFeed} people for dinner.")
-# removing key value pairs permanently
+
+## removing key value pairs permanently
 print(pineapple)
 del pineapple['taste']
 print(pineapple)
@@ -112,39 +116,39 @@ native_languages = {
 
 print(f"Anna speaks {native_languages['anna'].title()} at home.")
 
-# trying to access a non existing key will result in a KeyError
+## trying to access a non existing key will result in a KeyError
 print(pineapple['weight'])
 # use instead the get() method for dictionaries, if the key is not found
 # it returns the second argument.
 print(pineapple.get('weight', 'no info about weight!!'))
 
-# looping through dictionaries. Dictionaries have both keys and values, that are probably
+## looping through dictionaries. Dictionaries have both keys and values, that are probably
 # needed in the loop. So we use two variables in the for loop instead on only one.
 
 pineapple = {
     'Danish': 'ananas',
     'color': 'yellow',
     'taste': 'acidic',
-    'price': 16,
+    'price': 75,
     'size': 'medium'}
 
 for key, value in pineapple.items():
     print(f"\nKey: {key}")
     print(f"Value: {value}")
 
-# iterate through the native_languages dict.
+## iterate through the native_languages dict.
 for name, language in native_languages.items():
     print(f"{name.title()}'s native language is {language.title()}.")
 
-# looping through keys only in a dictionary
+## looping through keys only in a dictionary
 for name in native_languages.keys():
     print(name.title())
 
-# looping through values only in a dictionary
+## looping through values only in a dictionary
 for val in native_languages.values():
     print(val.title())
 
-# looping through keys is the default behavior when looping through a dictionary
+## looping through keys is the default behavior when looping through a dictionary
 # therefore this also works:
 for name in native_languages:
     print(name.title())
@@ -157,11 +161,12 @@ for name in native_languages.keys():
         language = native_languages[name].title()
         print(f"\t{name.title()}, {language} sounds so beautiful!")
 
-# The keys() method can also be used to search the dictionary keys.
+## The keys() method can also be used to search the dictionary keys.
 if 'erin' not in native_languages.keys():
     print("Erin, we have no idea which language you speak!")
 # you can loop through a dictionary's key in a particular order: sorted() alphabetically
-# add an extra entry to the dictionary
+
+## add an extra entry to the dictionary
 native_languages['phil'] = 'english'
 
 for name in sorted(native_languages.keys()):
@@ -174,7 +179,7 @@ print("The following languages have been mentioned:")
 for language in native_languages.values():
     print(language.title())
 
-# looping through all values in a dictionary: set() -
+## looping through all values in a dictionary: set() -
 # pulls all values WITH checking for repeats
 print("The following languages have been mentioned:")
 for language in set(native_languages.values()):
@@ -183,8 +188,9 @@ for language in set(native_languages.values()):
 # It’s easy to mistake sets for dictionaries because they’re both wrapped in braces.
 # When you see braces but no key-value pairs, you’re probably looking at a set.
 
-"""
+
 ## dictionary comprehension
+"""
 # why use dictionary comprehension? it's a good substitute for for-loops when building dictionaries 
 # but not all for-loops can be written as dictionary comprehension (but all dictionary comprehension can be written 
 # as a for-loop :-))
@@ -218,15 +224,13 @@ nested_dict = {'first': {'a': 1}, 'second': {'b': 2}}
 float_dict = {outer_k: {float(inner_v) for (inner_k, inner_v) in outer_v.items()} for (outer_k, outer_v) in nested_dict.items()}
 print(float_dict)
 
-"""
-DEFAULT DICTIONARIES
 
-Definition: a default dictionary is an empty dictionary, where if a missing key is called on, an empty integer (0) 
-or an empty list is assigned automatically (instead of throwing a missing key error)
+## DEFAULT DICTIONARIES
+"""
+Definition: a default dictionary is an empty dictionary, where if a missing key is called on, an empty integer (0) or an empty list is assigned automatically (instead of throwing a missing key error)
 """
 # defaultdictionaries are not part of the standard Python library so we have to import them
 from collections import defaultdict
-
 
 # 'empty' value of int, which is 0, for new elements
 # we are creating a dictionary for which anything that is NOT in it,
@@ -253,7 +257,7 @@ print(wow1['whatever'])
 wow2 = defaultdict(lambda: 42)
 print(wow2['whatever'])
 
-# in this example the dictionary is initialized with default int zero.
+## in this example the dictionary is initialized with default int zero.
 # in the loop every time is gets a new key argument, creates a new entry.
 # if the key exists it add to the value of the entry.
 
@@ -267,6 +271,29 @@ for veggie in list_of_strings:
     print(veggie, ":", count_words[veggie])
 
 print(count_words)
+
+##
+PowersOfTwo = dict()
+for x in range(-10, 11):
+    if x%2!=0 and 2**x > 1:
+        PowersOfTwo[x] = 2**x
+
+print(PowersOfTwo)
+##
+
+PowersOfTwo = {x:2**x for x in range(-10,11) if x%2!=0 and 2**x > 1}
+print(PowersOfTwo)
+##
+myDict = dict()
+myDict['a'] = ['airbag', 'airplain']
+myDict['b'] = ['borring','beer']
+myDict['c'] = ['casual', 'colosus']
+myDict['d'] = ['door', 'donkey','dumb']
+keyName = 'f'
+if keyName in myDict.keys():
+    for word in myDict[keyName]:
+        print(word)
+
 
 
 

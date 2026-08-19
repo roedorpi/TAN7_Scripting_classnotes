@@ -13,12 +13,14 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use("TkAgg")
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from wordcloud import WordCloud
 
-data = pd.read_csv("https://raw.githubusercontent.com/amankharwal/Website-data/master/dataset.csv")
+data = pd.read_csv("https://raw.githubusercontent.com/amankharwal/Website-data/master/dataset.csv",encoding='utf8')
 print(data.head())
 
 
@@ -49,21 +51,23 @@ model.fit(X_train, y_train)
 model.score(X_test, y_test)
 
 
-# %%
+## %%
 user = input("Enter a Text: ")
 user_data = cv.transform([user]).toarray()
 output = model.predict(user_data)
-print(output)
+print(output,)
 
-# wordcloud for english sentences
+## wordcloud for output language
 # get all sentences in english and put them in a list.
-eng_sentenses = data[data["language"].values == output[0]].Text.to_list()
+eng_sentenses = data[data["language"].values == "English"].Text.to_list()
 # prepare a countvectorizer to get unique features (words in this case) and their occurrence
 
 x = cv.fit_transform(eng_sentenses)
 ngrams = cv.get_feature_names_out()
 
-# get the frequency of the ngrams. The toarray() method returns the frequency of each ngram for each sentence in a list of list, each list corresponding to each sentence. By summing across lists we can obtain the frequency of occurence for each ngram across all sentences.
+# get the frequency of the ngrams. The toarray() method returns the frequency of each ngram for
+# each sentence in a list of list, each list corresponding to each sentence. By summing across
+# lists we can obtain the frequency of occurrence for each ngram across all sentences.
 ngrams_freq = sum(x.toarray())
 
 vocab = {}

@@ -5,7 +5,7 @@ as a dictionaries as values in a dictionary.  There are many possible combinatio
 different purposes. Beware of deeply nested structures, this generally means that an easier solution exists.
 
 """
-# a list of dictionaries
+## a list of dictionaries
 
 # each fruit is it's own dictionary
 fruit_1 = {'type': 'apple', 'color': 'red', 'size': 'medium', 'taste': 'sweet'}
@@ -19,7 +19,7 @@ for eachOne in fruit:
     print(eachOne)
 
 
-# make a basket of 15 identical fruit (apples)
+## make a basket of 15 identical fruit (apples)
 
 # Make an empty list for storing apples
 fruit = []
@@ -34,28 +34,28 @@ for apple in fruit[:5]:
     print(apple)
 print("...")
 
-#Show how many apples you created
+##Show how many apples you created
 print(f"Total number of apples in the basket: {len(fruit)}")
 
-# modify first 3 fruit to be green pears and the next 5 to blue bananas
-count = 0
-for eachOne in fruit[:8]:
+## modify first 3 fruit to be green pears and the next 5 to blue bananas
+
+for count, eachOne in enumerate(fruit[:8]):
     if eachOne['type'] == 'apple' and count < 3:
         eachOne['type'] = 'pear'
         eachOne['color'] = 'green'
     else:
         eachOne['type'] = 'banana'
         eachOne['color'] = 'blue'
-    count += 1
+
         
 # show the first 8 fruit
 for eachOne in fruit[:8]:
     print(eachOne)
 
 
-"""
-## a list in a dictionary
 
+## a list in a dictionary
+"""
 In the following example, two kinds of information are stored for each
 pizza: a type of crust and a list of toppings. The list of toppings is a value
 associated with the key 'toppings'. To use the items in the list, we give the
@@ -74,7 +74,7 @@ print(f"You ordered a {pizza['size']}-size pizza ""with the following toppings:"
 for topping in pizza['toppings']:
     print("\t" + topping)
     
-# You can nest a list inside a dictionary any time you want more than
+## You can nest a list inside a dictionary any time you want more than
 # one value to be associated with a single key in a dictionary.
 
 spoken_languages = {
@@ -95,15 +95,15 @@ for name, languages in spoken_languages.items():
 # else’s code with significant levels of nesting, most likely a simpler way to solve the
 # problem exists.
 
-"""
-## a dictionary in a dictionary
 
+## a dictionary in a dictionary
+"""
 For example, if you have several users
 for a website, each with a unique username, you can use the usernames as
 the keys in a dictionary. You can then store information about each user by
 using a dictionary as the value associated with their username. In the following
 listing, we store three pieces of information about each user: their
-first name, last name, and location.
+first name, last name, and position.
 """
 users = {
     'msco': {
@@ -125,4 +125,7 @@ for username, user_info in users.items():
 
     print(f"\tFull name: {full_name.title()}")
     print(f"\tJob title: {position.title()}")
+
+
+
 

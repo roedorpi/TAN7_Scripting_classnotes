@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+from operator import delitem
 
 # # data analysis workshop
 
@@ -39,16 +40,16 @@
 # Helmet use likelihood: How often does the participant wear a cycle helmet: 0=don’t cycle, 1=never - 7=always
 # 
 
-# ## import modules
+## import modules
 
 import pandas as pd
 import seaborn as sns
 import matplotlib
 import matplotlib.pyplot as plt
-import numpy as np
+# import numpy as np
+matplotlib.use('TkAgg') # back en for plotting needed in Win11
 
-
-# ### load data
+## # load data
 
 # read in data file as a data frame
 helmets_df = pd.read_csv('helmets_data.csv', delimiter=";")
@@ -59,7 +60,7 @@ helmets_df
 
 # ## data cleaning
 
-# ### exploring data
+## ## exploring data
 
 # first, let's get general statistics on all the variables.
 # do you notice any potentially problematic issues?
@@ -67,23 +68,23 @@ helmets_df.describe()
 helmets_df.groupby('Condition').agg({'Condition':['count']})
 
 
-# #### removing potential duplicates
+## #### removing potential duplicates
 # why are duplicate data points a problem?
 helmets_df = helmets_df.drop_duplicates()
 
 
-# #### screening for missing data
+## #### screening for missing data
 # Do we have any empty cells (missing values) in our data? 
 # we see that we have some potentially missing values, is that true?
 helmets_df.isnull().any()
 
 
-# Is that a problem? How is an empty cell different from 0?
+## Is that a problem? How is an empty cell different from 0?
 # remove rows with empty values
 helmets_df = helmets_df.dropna(axis=0, how='any')
 
 
-# #### locating and removing "illegal" values
+## #### locating and removing "illegal" values
 
 # age: what are "illegal" age values? Do we have any of them present in our data?
 # age counts
@@ -108,39 +109,43 @@ helmets_df.drop(index_name, inplace=True)
 
 helmets_df
 
-# save our cleaned data file!
-helmets_df.to_csv('outFile.csv')
+## save our cleaned data file!
+helmets_df.to_csv('outFile.csv',sep=";")
 
 
 # ## data plotting
 
-# ### scatterplots
+## ### scatterplots
+helmets_df = pd.read_csv('outFile.csv', delimiter=";")
 sns.scatterplot(data=helmets_df, x='BART', y='SSS_total', hue='Condition', style='Condition')
 plt.show()
+sns.scatterplot(data=helmets_df, x='STAI_S_Y_PRE', y='SSS_total', hue='Condition', style='Condition')
 
+## Linear model plotting by groups according to condition helment or cap
 cap_df = helmets_df[helmets_df.Condition == 1]
 hel_df = helmets_df[helmets_df.Condition == 2]
 
-sns.lmplot(x='BART', y='SSS_total', data=cap_df, ci=None).fig.suptitle("condition = cap")
-sns.lmplot(x='BART', y='SSS_total', data=hel_df, ci=None).fig.suptitle("condition = helmet")
+sns.lmplot(x='BART', y='SSS_total', data=cap_df).figure.suptitle("condition = cap")
+sns.lmplot(x='BART', y='SSS_total', data=hel_df, ci=None).figure.suptitle("condition = helmet")
 
 sns.lmplot(x='BART', y='SSS_total', hue='Condition', data=helmets_df)
+##
 
-sns.jointplot(x='BART', y='SSS_total', data=hel_df, kind="reg").fig.suptitle("condition = helmet")
-sns.jointplot(x='BART', y='SSS_total', data=cap_df, kind="reg").fig.suptitle("condition = cap")
+sns.jointplot(x='BART', y='SSS_total', data=hel_df, kind="reg").figure.suptitle("condition = helmet")
+sns.jointplot(x='BART', y='SSS_total', data=cap_df, kind="reg").figure.suptitle("condition = cap")
 
-sns.lmplot(x="BART", y="SSS_total", hue="Condition", col="Sex", data=helmets_df);
+sns.lmplot(x="BART", y="SSS_total", hue="Condition", col="Sex", data=helmets_df)
 
 
-# ### histograms
-sns.displot(helmets_df, x='BART',bins=15, kde=True)
+## ## histograms
+sns.displot(helmets_df, x='BART',bins=15, kde=False)
 
-sns.displot(helmets_df, x='BART', hue='Condition', kde=True)
+sns.displot(helmets_df, x='BART', hue='Condition', multiple='dodge', kde=True)
 
 sns.displot(helmets_df, x='BART', hue='Condition', multiple='dodge',bins=10, col='Sex', kde=True)
 
 
-# ### kernel density estimation
+## ## kernel density estimation
 sns.displot(helmets_df, x='BART', hue='Condition', kind="kde", multiple='stack')
 
 # ### boxplot
@@ -149,5 +154,7 @@ sns.catplot(data=helmets_df, x="Condition", y="BART", kind="bar")
 sns.catplot(data=helmets_df, x="Condition", y="BART", kind="box")
 
 sns.catplot(data=helmets_df, x="Condition", y="BART", kind="box", hue='Sex')
+
+sns.violinplot(data=helmets_df,x="Sex", y="BART",hue='Condition',palette='pastel')
 
 print('done')
