@@ -47,5 +47,11 @@ print(f'the hole number division by truncating the decimal portion 7 // 4 = {f}'
 
 
 ##
+userinput = input("Write your name, height in meters and weight in kilos, separated by comas: ")
+userinput = userinput.split(",")
+name = userinput[0]
+height = float(userinput[1])
+weight = float(userinput[2])
+print(f"{name} has a BMI index of {weight/(height**2)}")
 
 
