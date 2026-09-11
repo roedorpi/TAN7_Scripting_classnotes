@@ -69,17 +69,13 @@ print("Favorite snacks:\nchips\ncookies\nchocolate")
 print("Favorite snacks:\n\tchips\n\tcookies\n\tchocolate")
 
 #temporary stripping whitespace:
-
 favoriteSnack = ' cookies '
-
 favoriteSnack.rstrip() # stripping whitespace from the right side
 favoriteSnack.lstrip() # stripping whitespace from the left side
 favoriteSnack.strip() # stripping whitespace from both sides
 # permanently removing whitespace requires associating the stripped value with variable name:
-
 favoriteSnack = ' cookies '
 favoriteSnack = favoriteSnack.strip()
-
 # you can use more than one method
 favoriteSnack = favoriteSnack.strip().upper()
 """
@@ -162,3 +158,24 @@ nameUSA = name[0:3]+"x"+name[5:10]
 
 print(name)
 print(nameUSA)
+
+##
+sample = input("Enter a paragraph: ")
+
+words = sample.split()
+sentences = len([s for s in sample.split('.') if s.strip()])
+print(f"Characters: {len(sample)}")
+print(f"Words: {len(words)}")
+print(f"Sentences: {sentences}")
+LowerCase = [w.lower() for w in words]
+print(f"Lowercase: {LowerCase}")
+StrippedWords = [w.strip() for w in words]
+print(f"Trimmed: {StrippedWords}")
+# remove standard ASCII punctuation
+WordsNoPunct = []
+for w in StrippedWords:
+    if w.endswith(".") or w.endswith("?") or w.endswith("!") or w.endswith(",") or w.endswith(":"):
+        w = w[:-1]
+    WordsNoPunct.append(w)
+
+print(f"Words with no punctuation: {WordsNoPunct}")

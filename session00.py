@@ -1,5 +1,5 @@
 # Session 00 Course notes
-# Exercises. Familiarize your self with PyCharm and the python console for entering commands.
+# Exercises. Familiarize your self with the python console for entering commands.
 ## Hello world program
 print('hello world!')
 # Input function that reads keyboard input

@@ -27,3 +27,20 @@ import this
 
 # xkcd
 import antigravity
+##
+var1 = 1
+2var = 1
+print = 5
+MyVar_1 = 6
+My Var 1 = 7
+
+print(var1, 2var, print, MyVar_1, My Var 1)
+
+##
+BinaryVar = True
+BinaryVar = False
+IntVar = 345
+FloatVar = 2.8
+StringVar = "I am Groot!"
+
+
