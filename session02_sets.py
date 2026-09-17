@@ -160,3 +160,41 @@ leftoverFood = allAtHome - allNeeded
 
 # your roommate wants to know which ingredients from the kitchen you used to cook dinner
 usedToCook = allAtHome & allNeeded
+
+##
+"""
+Exercise:
+Take two short texts and compare them using sets.
+Your task is to print:
+1. the words that appear in both texts
+2. the words that appear only in the first text
+3. the words that appear only in the second text
+
+Hint: use lower() and .split() to normalize words, and then use set operations.
+"""
+"""
+Comparing two texts using sets
+A common use case is comparing two texts by their unique words.
+We first normalize the text to lowercase and remove punctuation,
+then convert each text into a set of words.
+"""
+
+def normalize_text(text):
+    replacements = str.maketrans({',': ' ', '.': ' ', '!': ' ', '?': ' ', ';': ' ', ':': ' ', '(': ' ', ')': ' ', '"': ' ', "'": ' '})
+    return text.lower().translate(replacements).split()
+
+text1 = "Python is fun and useful. Python helps us learn logic."
+text2 = "Python is powerful and fun for data analysis."
+
+words1 = set(normalize_text(text1))
+words2 = set(normalize_text(text2))
+
+common_words = words1 & words2
+only_in_text1 = words1 - words2
+only_in_text2 = words2 - words1
+
+print("Words in text 1:", words1)
+print("Words in text 2:", words2)
+print("Words common to both texts:", common_words)
+print("Words only in text 1:", only_in_text1)
+print("Words only in text 2:", only_in_text2)

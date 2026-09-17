@@ -25,36 +25,38 @@ text5.dispersion_plot(["fearless", "borring", "kill", "kitty", "lol"])
 plt.show()
 
 ## Word frequency distribution, that is, what is the frequency of appearance of each word in the text.
-fdist5 = FreqDist(text5)
-print(fdist5)
+fdist = FreqDist(text6)
+print(fdist)
 # show most commom words
-fdist5.most_common(50)
-fdist5.plot(50, cumulative=True)
+fdist.most_common(50)
+fdist.plot(50, cumulative=False)
 plt.show()
 
 ## select words based on their length
-V = set(text1)
-long_words = [w for w in V if 10 < len(w) < 20]
+#V = set(text6)
+long_words = [w for w in text6 if 10 < len(w) < 20]
 print(sorted(long_words))
 
-## select based on length and frequency
-fdist1 = FreqDist(text1)
-frequent_long_words = [w for w in V if len(w)>10 and fdist1[w] > 10]
+# select based on length and frequency
+frequent_long_words = [w.lower() for w in long_words if fdist[w] > 1]
+fdist_freq_long_words = FreqDist(frequent_long_words)
+fdist_freq_long_words.plot(20, cumulative=False)
+
 print(sorted(frequent_long_words))
 
 ## find collocations and bigrams
 # words that are commonly used together
-coloct1 = text1.collocations()
+coloct = text6.collocations()
 # bigrams every combination of two consecutive words
-bgt1 = list(bigrams(text1))
+bgt = list(bigrams(text6))
 
 ## finding the index of elements in a list using the iterator enumerate() that creates a list of tuples containing an index and the list value.
 index_of_the_word_the = [i for i,w in enumerate(sent3) if w == 'the']
 print(index_of_the_word_the)
 
-## all words starting with letter b in text5
+## all words starting with letter b in text6
 
-words_starting_with_b = [w for w in text5 if w.startswith('b')]
+words_starting_with_b = [w.lower() for w in text6 if w.lower().startswith('b')]
 print(sorted(set(words_starting_with_b)))
 
 ## functions for vocabulary size and word usage percentage, function definitions need to be read by the interpreter before they can be used.
@@ -68,12 +70,14 @@ def word_usage(word, txt) -> float:
     return fd.freq(word)*100
 ## Import plain text corpus. This example is based on 60 paragraphs of random topics. 30 are of low lexical complexity
 # and 30 are of high lexical complexity. The texts are in Danish.
+from pathlib import Path
 from nltk.corpus import PlaintextCorpusReader
 # folder with texts
-corpus_root = r".\textexamples"
+base = Path(__name__).resolve().parent
+corpus_root = base / "textexamples"
 # name of file pattern
-filepattern = r'Stimulus.*.txt'
-wordlists = PlaintextCorpusReader(corpus_root,filepattern)
+filepattern = r"Stimulus.*\.txt"
+wordlists = PlaintextCorpusReader(str(corpus_root), filepattern)
 fileID = wordlists.fileids()
 ## Get an overview of the content: calculate average word length, average sentence length and average word repetition
 # for each text file in the corpus

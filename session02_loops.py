@@ -111,9 +111,15 @@ new element, note the use of the loop variable "value", that is defined after th
 The final part of the statement tells the loop which elements to use at each iteration. 
 """
 # 1 line of code: the most concise version
-
 squares = [value ** 2 for value in range(1, 11)]
 print(squares)
+
+# given a text, extract words that are longer than 5 characters and put them in a list
+text = "Python is a powerful programming language"
+words = text.split()
+long_words = [word for word in words if len(word) > 5]
+print(long_words)
+
 """
 Looping through a slice of a list
 """
@@ -221,10 +227,10 @@ else:
 pass keyword, means nothing happens
 """
 likesPizza = input("Do you like pizza?")
-pizzaTopping = input("What is your favorite topping?")
 if likesPizza == "no":
     pass # does not like pizza... do nothing
 else:
+    pizzaTopping = input("What is your favorite topping?")
     print(f"Preparing your favorite {pizzaTopping} pizza!")
 
 
@@ -281,8 +287,7 @@ requested_toppings = []
 if requested_toppings:  # if there is anything in requested toppings list
     for requested_topping in requested_toppings:  # then for each individual topping from list
         print(f"Adding {requested_topping}.")  # print a message
-    print(
-        "\nFinished making your pizza!")  # after messages for all individual toppings are printed, print another message
+    print("\nFinished making your pizza!")  # after messages for all individual toppings are printed, print another message
 else:  # otherwise (if there is nothing in requested topping list)
     print("Are you sure you want a plain pizza?")  # print a message
 
