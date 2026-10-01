@@ -29,19 +29,22 @@ fdist = FreqDist(text6)
 print(fdist)
 # show most commom words
 fdist.most_common(50)
+plt.figure()
 fdist.plot(50, cumulative=False)
 plt.show()
 
 ## select words based on their length
 #V = set(text6)
-long_words = [w for w in text6 if 10 < len(w) < 20]
+long_words = [w for w in text6 if 5 < len(w) < 20]
 print(sorted(long_words))
 
 # select based on length and frequency
 frequent_long_words = [w.lower() for w in long_words if fdist[w] > 1]
 fdist_freq_long_words = FreqDist(frequent_long_words)
-fdist_freq_long_words.plot(20, cumulative=False)
 
+plt.figure()
+fdist_freq_long_words.plot(20, cumulative=False)
+plt.title('Frequency Distribution of Frequent Long Words')
 print(sorted(frequent_long_words))
 
 ## find collocations and bigrams
@@ -70,14 +73,16 @@ def word_usage(word, txt) -> float:
     return fd.freq(word)*100
 ## Import plain text corpus. This example is based on 60 paragraphs of random topics. 30 are of low lexical complexity
 # and 30 are of high lexical complexity. The texts are in Danish.
-from pathlib import Path
+import os
 from nltk.corpus import PlaintextCorpusReader
+import nltk
 # folder with texts
-base = Path(__name__).resolve().parent
-corpus_root = base / "textexamples"
+
+corpus_root = os.path.abspath("textexamples")
+nltk.data.path.append(corpus_root)
 # name of file pattern
 filepattern = r"Stimulus.*\.txt"
-wordlists = PlaintextCorpusReader(str(corpus_root), filepattern)
+wordlists = PlaintextCorpusReader(corpus_root, filepattern)
 fileID = wordlists.fileids()
 ## Get an overview of the content: calculate average word length, average sentence length and average word repetition
 # for each text file in the corpus
@@ -104,13 +109,14 @@ Std_easy = Average[Average[:,3]==1,:-1].std(axis=0)
 print(Ave_hard, Ave_easy, Std_hard, Std_easy)
 
 ## get the fileID for the two conditions, ignoring unwanted files, the ones with 'quest' in the file name
-fileID_hard = [i for i in fileID if 'Hard' in i and 'quest' not in i]
-fileID_easy = [i for i in fileID if 'Easy' in i and 'quest' not in i]
+fileID = [i for i in fileID if 'quest' not in i]
+
 ## Conditional frequency distribution by type (hard, easy) for word length
 cdf = nltk.ConditionalFreqDist(
-    (Type[0][9:13], len(word))
-    for Type in [fileID_hard, fileID_easy]
+    (Type[9:13], len(word))
+    for Type in fileID
     for word in wordlists.words(Type))
+plt.figure()
 cdf.plot(cumulative=False)
 plt.title('Conditional Frequency Distribution for word length')
 plt.xlabel('Word length')
@@ -121,13 +127,14 @@ plt.show()
 # frequency of occurence.
 fdist = nltk.FreqDist(wordlists.words())
 cdf = nltk.ConditionalFreqDist(
-    (Type[0][9:13], word)
-    for Type in [fileID_hard, fileID_easy]
+    (Type[9:13], word)
+    for Type in fileID
     for word in [w.lower() for w in wordlists.words(Type)]
     # for words between 5 and 12 characters long and with frequency count between 20 and 40
     if 12 > len(word) >= 5 and  40>fdist[word]>20)
+plt.figure()
 cdf.plot(cumulative=False)
-plt.title('CDF for word of length greater than 5 with counts between 20 and 40')
+plt.title('CFD for word of length greater than 5 with counts between 20 and 40')
 plt.xlabel('Word length')
 plt.ylabel('Counts')
 plt.show()
@@ -144,8 +151,8 @@ def find_collocations(text) -> list:
     for w in text:
         words = cfdbg[w].most_common(n=10)
         if words:
-            # check is the words of the bigram are longer that 3 characters and that they occur at least three times
-            common_bigrams = [(w,wd[0]) for wd in words if wd[1] >=3 and len(w)>3 and len(wd[0])>2]
+            # check that both words of each bigram are longer than 3 characters and that they occur at least three times
+            common_bigrams = [(w,wd[0]) for wd in words if wd[1] >=3 and len(w)>2 and len(wd[0])>2]
             if common_bigrams:
                 # add the bigrams as tuples in the collocation list
                 for bg in common_bigrams:
@@ -154,35 +161,12 @@ def find_collocations(text) -> list:
     collocations = sorted(set(collocations))
     return collocations
 
-# Make all text lower case and remove single character words (also commas exclamation or question marks and periods)
-hard = [w.lower() for w in wordlists.words(fileID_hard) if len(w)>5]
-easy = [w.lower() for w in wordlists.words(fileID_easy) if len(w)>5]
+# Make all text lower case and remove words of length less than 5 characters, for the two conditions, hard and easy.
+hard = [w.lower() for w in wordlists.words([fid for fid in fileID if 'Hard' in fid])]
+easy = [w.lower() for w in wordlists.words([fid for fid in fileID if 'Easy' in fid])]
 # apply the function to the desired text
 hard_collocations = find_collocations(hard)
 easy_collocations = find_collocations(easy)
-## Function for generating random text based on conditional frequencies of a corpus bigrams.
-from random import randint as randi
-def generate_model(text, word, num=15) -> list:
-    new_sentence = []
-    # make bigrams
-    bg = nltk.bigrams(text)
-    # conditional frequency distribution of bigrams
-    cdfbg = nltk.ConditionalFreqDist(bg)
-    # loop for desired number of words
-    for i in range(num):
-        # add space after the word
-        new_sentence.append(word)
-        words = cdfbg[word].most_common(n=5)
-        if words:
-            indx = randi(0, len(words)-1)
-            word = words[indx][0]
-        else:
-            continue
-    return new_sentence
-#
-new_hard_sentence = generate_model(hard, 'de',10)
-
-new_easy_sentence = generate_model(easy, 'de',10)
 
 ## stop words, these are plumbing words of the text, they are there for gramatical purposes but do not contribute to the
 # meaning.

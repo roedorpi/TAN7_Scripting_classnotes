@@ -80,21 +80,6 @@ for line in lines:
 print(f"{pi_string}...")
 print(len(pi_string))
 
-## get files from a specific folder
-# os package for folder operations
-import os
-absolute_path_dir = "C:/Users/rop/Documents/DATA/courses/Scripting_TAN7/classnotes"
-curdir = os.getcwd() # get current directory
-relative_path_dir = "../classnotes"
-# add the name of the file with the join command to ensure correct path separator
-filename = os.path.join(absolute_path_dir,"cats.csv")
-with open(filename) as file_object:
-    lines = file_object.readlines()
-
-filename = os.path.join(relative_path_dir,"birthdays.csv")
-with open(filename,encoding='utf-8') as file_object:
-    lines = file_object.readlines()
-
 ## is your birthday contained in pi?
 
 #birthday = input("Enter your birthday, in the form ddmmyy: ")
@@ -310,7 +295,7 @@ with open('vegetables.csv', mode='w', newline='') as veggie_file: # why newline=
 """
 ##
 import time as tt
-import datetime as dt
+
 import csv
 import os
 curdir = os.getcwd()
@@ -352,7 +337,7 @@ with open('TAN7.csv', mode='w', newline='') as csv_file:
 
 
 
-import csv
+##
 
 with open('TAN7_other.csv', mode='w', newline='') as TAN7_file: # why newline=''? 
     TAN7_writer = csv.writer(TAN7_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -371,14 +356,3 @@ with open('TAN7_other.csv', mode='w', newline='') as TAN7_file: # why newline=''
             writing_active = False
 
 
-##
-
-import time
-i = 0
-t = time.time()
-while i<5:
-    t1 = time.time()
-    if (t1-t>2):
-        print('word')
-        i+=1
-        t = time.time()
