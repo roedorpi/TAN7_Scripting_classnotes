@@ -15,13 +15,13 @@ matplotlib.use('TkAgg') # back end for windows systems
 from nltk.book import *
 
 ##  search for specific words in the one of the provided texts.
-text5.concordance("lol")
-text5.similar("lol")
-text5.count('lol')
-text5.common_contexts('lol')
+text6.concordance("bastard")
+text6.similar("Arthur")
+text6.count('Camelot')
+text6.common_contexts('lol')
 
 # make a plot of where in the text each word appears.
-text5.dispersion_plot(["fearless", "borring", "kill", "kitty", "lol"])
+text6.dispersion_plot(["bastards", "sheep", "grail", "Arthur", "Camelot"])
 plt.show()
 
 ## Word frequency distribution, that is, what is the frequency of appearance of each word in the text.

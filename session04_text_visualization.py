@@ -1,5 +1,5 @@
-"""Session 5: Visualizing word distributions and text patterns."""
-
+"""Session 4: Visualizing word distributions and text patterns."""
+##
 from collections import Counter
 from nltk.corpus import gutenberg
 import matplotlib.pyplot as plt
