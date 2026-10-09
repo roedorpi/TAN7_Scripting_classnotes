@@ -116,8 +116,7 @@ print(musician)
 
 
 def build_person(first_name, last_name, age=None):
-    # none is a placeholder or default value
-    # for when a variable has no specific value assigned to it
+    # none is a placeholder or default value for when a variable has no specific value assigned to it
     """Return a dictionary of information about a person."""
     person = {'first': first_name, 'last': last_name}
     if age:

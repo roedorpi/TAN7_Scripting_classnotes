@@ -32,18 +32,18 @@ lower_words = lower_text_no_punct.split()
 fdist_length_words = FreqDist(len(word) for word in words if len(word) > 3)
 #use the plot() method of the FreqDist class to plot the frequency distribution of the length of words and sentences. The plot() method takes an optional argument to specify the number of bins to use for the histogram. We can also use the cumulative argument to specify whether to plot the cumulative frequency distribution or not.
 plt.figure()
-fdist_length_words.plot(10,cumulative=False)
+fdist_length_words.plot(10,cumulative=True)
 plt.xlabel("Frequency of word lengths")
 plt.ylabel("Frequency")
 plt.show()
 ## the elaborated way, this function calculates the frequency distribution of the length of words in a text, removing punctuation and converting to lower case, and keeping only words with length greater than 3. The function returns a dictionary with the length of words as keys and the frequency of words with that length as values.
 def word_length_distribution(txt,wordlength=3):
     # Renove punctuation and convert to lower case
-    txt = text
+    txt = txt.lower()
     for letter in txt:
         if letter in string.punctuation:
             txt = txt.replace(letter, "")
-    txt = txt.lower()
+
     # keep only words with length greater than 3
     wrds = []
     for wrd in txt.split():
@@ -90,8 +90,10 @@ for txtType in textTypes:
 ## Now we can construct a list of tuples with the text type and the number of words and sentences for each text file in the corpus. We can use a list comprehension to create the list of tuples, and then use the ConditionalFreqDist class of the nltk module to create a conditional frequency distribution of the number of words and sentences for each text type. The ConditionalFreqDist class takes a list of tuples as input, where each tuple contains a condition (in this case, the text type) and a value (in this case, the number of words or sentences). The ConditionalFreqDist class creates a frequency distribution for each condition, which we can use to compare the two categories of texts.
 
 numbwords = [(txtType, len(Texts.words(txtId))) for txtType in textTypes for txtId in Texts.fileids() if txtType in txtId and "_quest.txt" not in txtId]
+
 numbsentences = [(txtType, len(Texts.sents(txtId))) for txtType in textTypes for txtId in Texts.fileids() if txtType in txtId and "_quest.txt" not in txtId]
 # the same but with for loops and if statements, this is more readable but less efficient
+##
 num_words = []
 num_sentences = []
 for txtType in textTypes:
